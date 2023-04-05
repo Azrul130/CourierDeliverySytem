@@ -20,7 +20,7 @@
         <div class="content">
             <h1>Please <a href="Login.jsp">Login</a> to Continue</h1><br/><!-- comment -->
             <p>No account? <a href="Registration.jsp">Register Here</a></p>
-            <p>test</p>
+            
         </div>
         
         <footer>
