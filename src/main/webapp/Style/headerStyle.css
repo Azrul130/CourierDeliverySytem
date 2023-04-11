@@ -8,107 +8,107 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 /* Header */
-.header {
-    background-color: #fa0039;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    width: 100%;
-    box-sizing: border-box;
+header {
+  background-color: #fa0039;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .navigation {
-    display: flex;
-    align-items: center;
-    position: relative; /* added */
+  display: flex;
+  align-items: center;
 }
 
 .navigation a {
-    color: #333;
-    font-size: 1.2rem;
-    text-decoration: none;
-    margin-left: 2rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
+  color: #333;
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-left: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
 }
 
 .navigation a:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .navigation .active {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
 }
 
 .navigation .active:hover {
-    color: black;
+  color: black;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  .navigation a {
+    margin-left: 1rem;
+  }
 }
 
-.dropbtn {
-    color: #333;
-    font-size: 1.2rem;
-    text-decoration: none;
-    margin-left: 2rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+/* Account dropdown */
+.account {
+  position: relative;
 }
 
-.dropdown:hover .dropbtn {
-    background-color: #f5f5f5;
+.account-content {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  z-index: 999;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    background-color: #f5f5f5;
-    min-width: 160px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.account:hover .account-content {
+  display: block;
 }
 
-.dropdown-content a {
-    color: #333;
-    font-size: 1.2rem;
-    text-decoration: none;
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
+.account a {
+  color: #333;
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-left: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
 }
 
-.dropdown-content a:hover {
-    background-color: #e6e6e6;
+.account a:hover {
+  background-color: #f5f5f5;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+.account .active {
+  background-color: #333;
+  color: #fff;
+}
+
+.account .active:hover {
+  color: black;
 }
