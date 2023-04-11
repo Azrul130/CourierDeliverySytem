@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
 */
 
-header {
+.header {
     background-color: #fa0039;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     height: 80px;
@@ -55,14 +55,43 @@ header {
     background-color: #333;
     color: #fff;
 }
-.navigation .active:hover{
+
+.navigation .active:hover {
     color:black;
 }
+
+.dropdown {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 998;
+    display: none;
+}
+
+.dropdown a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.dropdown a:hover {
+    background-color: #f5f5f5;
+}
+
+.navigation .account:hover .dropdown {
+    display: block;
+}
+
 @media screen and (max-width: 768px) {
-.logo {
-    font-size: 1.5rem;
-}
-.navigation a {
-    margin-left: 1rem;
-}
+    .logo {
+        font-size: 1.5rem;
+    }
+    .navigation a {
+        margin-left: 1rem;
+    }
 }
