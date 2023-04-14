@@ -25,7 +25,7 @@
                 <input type="submit" value="Track" id="submitBtn" />
             </form>
         </div>
-            hihfs
+            
         <footer>
         <jsp:include page="footer.html" flush="true"></jsp:include>
         </footer>>
