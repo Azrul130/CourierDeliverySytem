@@ -24,7 +24,6 @@
                 <input type="text" name="TrackNo" id="TrackNo" placeholder="eg:MY5468279124" required /><!-- Track Number input --><br/>
                 <input type="submit" value="Track" id="submitBtn" />
             </form>
-            <p>test</p>
         </div>
         
         <footer>
