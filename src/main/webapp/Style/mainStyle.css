@@ -18,16 +18,25 @@ body{
   text-align: center;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+#TrackNo {
+    border-radius: 2px;
+    width: 100%;
+    text-align: center;
+    height: 22px;
 }
-
-a {
-  color: #007bff;
-  text-decoration: none;
+#TrackNo:focus{
+    border: 1px solid black;
+    background-color: lightcyan;
 }
-
-a:hover {
-  text-decoration: underline;
+#submitBtn{
+    width: 100px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 25px;
+    background-color: #fa0039;
+    font-weight: bold;
+}
+#submitBtn:hover{
+    background-color: #fd1e3b;
 }

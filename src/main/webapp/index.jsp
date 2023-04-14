@@ -18,8 +18,13 @@
         </header>>
         
         <div class="content">
-            <h1>Please <a href="Login.jsp">Login</a> to Continue</h1><br/><!-- comment -->
-            <p>No account? <a href="Registration.jsp">Register Here</a></p>
+            <h1>Track Your Parcel</h1><br/>
+            
+            <form action="#" method="#">
+                <input type="text" name="TrackNo" id="TrackNo" placeholder="eg:MY5468279124" required /><!-- Track Number input --><br/>
+                <input type="submit" value="Track" id="submitBtn" />
+            </form>
+            
         </div>
         
         <footer>
