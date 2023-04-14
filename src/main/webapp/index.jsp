@@ -15,7 +15,8 @@
     <body>
         <header>
             <jsp:include page="header.html" flush="true"></jsp:include>
-        </header>>
+        </header>
+        <p>test</p>
         
         <div class="content">
             <h1>Track Your Parcel</h1><br/>
