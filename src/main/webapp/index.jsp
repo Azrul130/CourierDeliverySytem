@@ -14,7 +14,7 @@
     </head>
     <body>
         <header>
-            <%@include file="header.html" %>
+            <jsp:include page="header.html" flush="true"></jsp:include>
         </header>>
         
         <div class="content">
@@ -23,7 +23,7 @@
         </div>
         
         <footer>
-            <%@include file="footer.html" %>
+        <jsp:include page="footer.html" flush="true"></jsp:include>
         </footer>>
     </body>
 </html>
