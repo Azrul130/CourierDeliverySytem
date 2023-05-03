@@ -21,12 +21,23 @@
 		<label for="email">Email</label>
 		<input type="email" id="email" name="email" placeholder="Enter your email">
 
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="0121256154" pattern="[0-9]{10,11}"><!-- comment -->
+                
 		<label for="password">Password</label>
 		<input type="password" id="password" name="password" placeholder="Enter your password">
 
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
 
+                <div>
+                    Registration Type 
+                    <input type="radio" id="cust" name="RegistationType" value="1">
+                    <label for="cust">Customer</label>
+                    <input type="radio" id="emp" name="RegistrationType" value="2">
+                    <label for="emp">Employee</label> <br> <br> 
+                </div>
+                
 		<input type="submit" value="Register">
 	</form>
 </body>

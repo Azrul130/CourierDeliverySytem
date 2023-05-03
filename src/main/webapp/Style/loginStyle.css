@@ -37,6 +37,11 @@ label {
 	margin-bottom: 10px;
 	color: #666;
 }
+div label{
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #666;
+}
 
 input[type="text"], input[type="password"] {
 	padding: 10px;

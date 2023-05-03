@@ -16,9 +16,20 @@
 	<form>
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" required>
+                
 		<label for="password">Password:</label>
 		<input type="password" id="password" name="password" required>
+                <div>
+                    Login Type 
+                    <input type="radio" id="cust" name="loginType" value="1">
+                    <label for="cust">Customer</label>
+                    <input type="radio" id="emp" name="loginType" value="2">
+                    <label for="emp">Employee</label> <br> <br> 
+                </div>
+                
+                
 		<input type="submit" value="Submit">
+                
 	</form>
 </body>
 </html>

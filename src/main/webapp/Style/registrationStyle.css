@@ -37,8 +37,13 @@ label {
 	margin-bottom: 10px;
 	color: #666;
 }
+div label{
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #666;
+}
 
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="email"], input[type="password"] , input[type="tel"] {
 	padding: 10px;
 	border: none;
 	border-radius: 5px;
@@ -49,7 +54,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	color: #333;
 }
 
-input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder {
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder input[type="tel"]::placeholder {
 	color: #999;
 }
 
