@@ -13,5 +13,5 @@ public class AccountDAO {
     private static final String user = "root";
     private static final String pass = "admin";
     
-    private static final String Add_New_Customer = "INSERT INTO customer (CustId,CustName,Password,CustPhoneNo,email";
+    private static final String Add_New_Customer = "INSERT INTO customer (CustId,CustName,Password,CustPhoneNo,email) values (?,?,?,?,?);";
 }
