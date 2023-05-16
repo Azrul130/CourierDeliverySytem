@@ -47,41 +47,9 @@
       </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-          <div class="container">
-            <a class="navbar-brand" href="#">Courier Delivery System</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" 
-                           role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Account
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="accountDropdown">
-                            <a class="dropdown-item" href="Login.jsp">Sign In</a>
-                            <a class="dropdown-item" href="Registration.jsp">Log In</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-          </div>
-        </nav>
-
+        <jsp:include page="header.html" flush="true" />
+        
+        
         <main class="flex-shrink-0">
             <header class="bg-light text-center py-5">
                 <h1>Welcome to the Courier Delivery System</h1>
@@ -105,9 +73,7 @@
 
         </main>
         
-        <footer class="bg-dark text-white text-center py-3">
-          <p>&copy; 2023 Courier Delivery System. All rights reserved.</p>
-        </footer>
+        <jsp:include page="footer.html" flush="true" />
         
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
