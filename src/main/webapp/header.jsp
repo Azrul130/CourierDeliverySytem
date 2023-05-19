@@ -1,10 +1,11 @@
+<%-- 
+    Document   : header
+    Created on : 19 May 2023, 4:49:46 pm
+    Author     : MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!-- 
-    Document        : footer
-    Created on      : 4 Apr 2023, 11:01:03 am
-    Author          : MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
-    Last Updated on : 16 May 2023
--->
 <html>
 <head>
 	<title>Page Title</title>
@@ -85,7 +86,3 @@
     crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
