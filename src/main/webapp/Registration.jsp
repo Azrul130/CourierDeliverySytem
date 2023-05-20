@@ -38,6 +38,9 @@
                 </div>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username">
+                
+                <label for="name">Username</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
 
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email">
@@ -64,9 +67,25 @@
                     <input type="radio" id="emp" name="RegistrationType" value="employee" onclick="showForm(this.value)">
                     <label for="emp">Employee</label>
                 </div>
-                <label for="name">Name</label>
+                
+                 <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                
+                <label for="name">Username</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name">
 
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="0121256154" pattern="[0-9]{10,11}"><!-- comment -->
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+                
                 <label for="occupation">Occupation</label>
                 <select id="occupation" name="occupation" class="form-select">
                     <option>Rider</option>

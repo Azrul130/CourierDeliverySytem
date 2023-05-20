@@ -8,38 +8,50 @@ package com.mycompany.courierdeliverysystem.model;
  *
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
-public class Customer {
-    private String id;
+public class Customer extends Account{
+    private String custId;
+    private String username;
     private String name;
-    private String phoneNo;
-    private String Ic;
-
-    public Customer(String id, String name , String phoneNo, String Ic){
-        super();
-        this.id = id;
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.Ic = Ic;
-    }
-    public Customer(String name , String phoneNo, String Ic){
-        super();
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.Ic = Ic;
+    private String password;
+    private String email;
+    private String phone;
+    private String Account_Type;
+    
+    public Customer(String un, String name, String pass, String email, String phone, String type){
+        this.username=un;
+        this.Account_Type=type;
+        this.email=email;
+        this.name=name;
+        this.password=pass;
+        this.phone=phone;
     }
 
     /**
-     * @return the id
+     * @return the custId
      */
-    public String getId() {
-        return id;
+    public String getCustId() {
+        return custId;
     }
 
     /**
-     * @param id the id to set
+     * @param custId the custId to set
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setCustId(String custId) {
+        this.custId = custId;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -57,31 +69,59 @@ public class Customer {
     }
 
     /**
-     * @return the phoneNo
+     * @return the password
      */
-    public String getPhoneNo() {
-        return phoneNo;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * @param phoneNo the phoneNo to set
+     * @param password the password to set
      */
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
-     * @return the Ic
+     * @return the email
      */
-    public String getIc() {
-        return Ic;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param Ic the Ic to set
+     * @param email the email to set
      */
-    public void setIc(String Ic) {
-        this.Ic = Ic;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @return the Account_Type
+     */
+    public String getAccount_Type() {
+        return Account_Type;
+    }
+
+    /**
+     * @param Account_Type the Account_Type to set
+     */
+    public void setAccount_Type(String Account_Type) {
+        this.Account_Type = Account_Type;
     }
     
     
