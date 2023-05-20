@@ -35,6 +35,7 @@ public class Customer extends Account {
     public Customer(String id, String un, String name, String pass, String email, String phone, String type) {
         super();
     }
+    public Customer(){};
 
     /**
      * @return the custId

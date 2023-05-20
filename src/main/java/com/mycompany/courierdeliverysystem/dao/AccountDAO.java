@@ -8,7 +8,10 @@ import com.mycompany.courierdeliverysystem.model.Customer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -62,5 +65,28 @@ public class AccountDAO {
             e.printStackTrace();
         }
         return status;
+    }
+    //View all Customer
+    public static List<Customer> viewAllCust(){
+        List<Customer> list = new ArrayList<>();
+        try {
+            Connection con = AccountDAO.getConnection();
+            PreparedStatement ps = con.prepareStatement(View_All_Customer);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Customer c = new Customer();
+                c.setCustId(rs.getString(1));
+                c.setUsername(rs.getString(2));
+                c.setName(rs.getString(3));
+                c.setPassword(rs.getString(4));
+                c.setPhone(rs.getString(5));
+                c.setEmail(rs.getString(6));
+                
+                list.add(c);
+            }
+            con.close();
+        } catch (SQLException e) {
+        }
+        return list;
     }
 }
