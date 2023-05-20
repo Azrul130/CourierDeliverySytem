@@ -4,11 +4,15 @@
  */
 package com.mycompany.courierdeliverysystem.model;
 
+import java.sql.*;
+import java.util.Random;
+
 /**
  *
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
-public class Customer extends Account{
+public class Customer extends Account {
+
     private String custId;
     private String username;
     private String name;
@@ -16,14 +20,20 @@ public class Customer extends Account{
     private String email;
     private String phone;
     private String Account_Type;
-    
-    public Customer(String un, String name, String pass, String email, String phone, String type){
-        this.username=un;
-        this.Account_Type=type;
-        this.email=email;
-        this.name=name;
-        this.password=pass;
-        this.phone=phone;
+
+    public Customer(String un, String name, String pass, String email, String phone, String type) {
+        super();
+        this.username = un;
+        this.Account_Type = type;
+        this.email = email;
+        this.name = name;
+        this.password = pass;
+        this.phone = phone;
+        this.custId = generateRandomCustId();
+    }
+
+    public Customer(String id, String un, String name, String pass, String email, String phone, String type) {
+        super();
     }
 
     /**
@@ -124,5 +134,64 @@ public class Customer extends Account{
         this.Account_Type = Account_Type;
     }
     
-    
+    //Auto-create CustId
+    public String generateRandomCustId() {
+        String generatedCustId = "";
+
+        // Generate random number
+        Random random = new Random();
+        int randomNumber = random.nextInt(90000) + 10000; // Random number between 10000 and 99999
+
+        // Combine 'C' and random number
+        generatedCustId = "C" + randomNumber;
+
+        // Check if generated CustId already exists in the database
+        boolean isUnique = false;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Establish database connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem");
+
+            // Prepare SQL statement to check if CustId already exists
+            String query = "SELECT * FROM customer WHERE custId = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, generatedCustId);
+
+            // Execute the query
+            resultSet = statement.executeQuery();
+
+            // Check if any row is returned
+            if (!resultSet.next()) {
+                // CustId is unique
+                isUnique = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the database resources
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // If generated CustId is not unique, recursively call the method to generate a new one
+        if (!isUnique) {
+            generatedCustId = generateRandomCustId();
+        }
+
+        return generatedCustId;
+    }
 }

@@ -16,7 +16,8 @@ public class Account {
     public Account(){
     }
     public Account(Customer cust){
-        
+        this.Account_Type = cust.getAccount_Type();
+        this.cust=cust;
     }
     public Account(Employee emp){
         
