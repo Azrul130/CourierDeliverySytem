@@ -23,24 +23,7 @@
         
         <h2>Create Order</h2>
 
-        <form><table>
-                <tr>
-                    <td>
-                        <label for="senderName">Sender Name:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="senderName" name="senderName" required><br/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label for="senderAddress">Sender Address:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="senderAddress" name="senderAddress" required><br/>
-                    </td>
-                </tr>
+        <form action="processOrder.jsp" method="POST"><table>              
 
                 <tr>
                     <td>
@@ -62,19 +45,19 @@
 
                 <tr>
                     <td>
-                        <label for="packageWeight">Package Weight:</label>
+                        <label for="weight">Package Weight:</label>
                     </td>
                     <td>
-                        <input type="number" id="packageWeight" name="packageWeight" min="0" required><br/>
+                        <input type="number" id="weight" name="weight" min="0" required><br/>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <label for="packageDescription">Package Description:</label>
+                        <label for="Description">Package Description:</label>
                     </td>
                     <td>
-                        <input type="text" id="packageDescription" name="packageDescription" required><br/>
+                        <input type="text" id="Description" name="Description" required><br/>
                     </td>
                 </tr>
             </table>
