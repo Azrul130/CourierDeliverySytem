@@ -13,6 +13,9 @@
         <link rel="stylesheet" type="text/css" href="Style/registrationStyle.css">
     </head>
     <body>
+        <jsp:include page="header.jsp" flush="true" />
+        <br><!-- comment -->
+        
         <h1>Create Order</h1>
 
         <form><table>
@@ -77,5 +80,8 @@
             </p>
 
         </form>
+        <br><!-- comment -->
+        <br><!-- comment -->
+        <jsp:include page="footer.html" flush="true" />
     </body>
 </html>
