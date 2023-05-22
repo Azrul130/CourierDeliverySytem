@@ -192,7 +192,7 @@ public class Customer extends Account {
         if (!isUnique) {
             generatedCustId = generateRandomCustId();
         }
-
+        
         return generatedCustId;
     }
 }

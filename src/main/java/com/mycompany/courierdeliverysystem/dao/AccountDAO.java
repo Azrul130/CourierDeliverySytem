@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class AccountDAO {
     
     //SQL Query
     private static final String Add_New_Customer = "INSERT INTO customer (CustId, username, CustName, Password, CustPhoneNo, email) values (?,?,?,?,?);";
-    private static final String Add_New_Employee = "INSERT INTO employe (EmployeeId, username, password, Name, phoneNo, email, Occupation) values (?,?,?,?,?,?,?)";
+    private static final String Add_New_Employee = "INSERT INTO employee (EmployeeId, username, password, Name, phoneNo, email, Occupation) values (?,?,?,?,?,?,?)";
     private static final String View_All_Customer = "SELECT * FROM customer";
     private static final String View_Customer_By_Id = "SELECT * FROM customer WHERE CustId = ?";
     private static final String Edit_Customer = "UPDATE customer SET username=?, CustName=?, Password=?, CustPhoneNo=?, email=? WHERE CustId=?";
@@ -71,8 +72,8 @@ public class AccountDAO {
         List<Customer> list = new ArrayList<>();
         try {
             Connection con = AccountDAO.getConnection();
-            PreparedStatement ps = con.prepareStatement(View_All_Customer);
-            ResultSet rs = ps.executeQuery();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(View_All_Customer);
             while (rs.next()) {
                 Customer c = new Customer();
                 c.setCustId(rs.getString(1));
@@ -88,5 +89,56 @@ public class AccountDAO {
         } catch (SQLException e) {
         }
         return list;
+    }
+    //View Customer By Id
+    public static Customer viewCust(String CustId){
+        Customer cust = new Customer();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(View_Customer_By_Id);
+            ps.setString(1, CustId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                cust.setCustId(rs.getString(1));
+                cust.setUsername(rs.getString(2));
+                cust.setName(rs.getString(3));
+                cust.setPassword(rs.getString(4));
+                cust.setPhone(rs.getString(5));
+                cust.setEmail(rs.getString(6));
+                con.close();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return cust;
+    }
+    //Edit Customer
+    public static void updateCust(Customer cust){
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(Edit_Customer);
+            ps.setString(1, cust.getUsername());
+            ps.setString(2, cust.getName());
+            ps.setString(3, cust.getPassword());
+            ps.setString(4, cust.getPhone());
+            ps.setString(5, cust.getEmail());
+            ps.setString(6, cust.getCustId());
+            ps.executeUpdate();
+            con.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    //Delete Customer
+    public static void deleteCust(String custId) {
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(Delete_Customer);
+            ps.setString(1, custId);
+            ps.executeUpdate();
+            con.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 }
