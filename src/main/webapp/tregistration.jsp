@@ -36,7 +36,7 @@
             ps.setString(5, cust.getPhone() );
             ps.setString(6, cust.getEmail() );
             
-            status = ps.executeUpdate();
+            ps.executeUpdate();
             if (status > 0){
                 out.println("<h1>Registration for "+cust.getName() + " is Successful</h1>");
                 out.println("<a href='login.jsp' >Login Page</a>");
