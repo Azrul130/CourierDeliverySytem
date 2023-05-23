@@ -18,14 +18,10 @@
     <body>
         <jsp:include page="header.jsp" flush="true" />
         <%
-            
         String name = request.getParameter("recipientName");
         String address = request.getParameter("recipientAddress");
-        double W = Double.parseDouble(request.getParameter("weight"));
+        String W = request.getParameter("weight");
         String desc = request.getParameter("Description");
-        double price = W * 4;
-        
-String Price = String.format("%.1f", price);
         %>
         <br><!-- comment -->
         <br><!-- comment -->
@@ -35,10 +31,7 @@ String Price = String.format("%.1f", price);
         <p>Recipient Address : <%=address%></p>
         <p>Package Weight    : <%=W%></p>
         <p>Description       : <%=desc%></p>
-        <p>Price (RM)        : <%=Price%></p>
         </fieldset>
-        <button class="print-button" onclick="#">Print</button>
-        <button class="pay-button" onclick="#">Pay</button>
         <br><!-- comment -->
         <br><!-- comment -->
         <jsp:include page="footer.html" flush="true" />
