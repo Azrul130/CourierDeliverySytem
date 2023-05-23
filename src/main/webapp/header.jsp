@@ -75,11 +75,6 @@
                                     </c:otherwise>
                                 </c:choose>
                                         
-
-                                <a class="dropdown-item" href="order.jsp">Create Order</a>
-                                <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
-
-
                             </div>
                         </li>
                         <li class="nav-item">
