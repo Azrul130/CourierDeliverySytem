@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.mycompany.courierdeliverysystem.model.Employee" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,7 +40,7 @@
         <jsp:include flush="true" page="header.jsp" />
         <div class="container">
             <div class="container container-s text-center">
-                <h1>Welcome Back !</h1>
+                <h1>Welcome Back <%= ((Employee) session.getAttribute("emp")).getUsername() %> !</h1>
             </div>
             <div class="container">
                 <div class="row">

@@ -42,7 +42,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Phone No</th>
                         <th scope="col">Email</th>
-                        <th colspan="2">Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -56,8 +56,7 @@
                             <td><c:out value="${cust.name}"/></td>
                             <td><c:out value="${cust.phone}"/></td>
                             <td><c:out value="${cust.email}"/></td>
-                            <td><a href="CustomerController?action=edit&custId=<c:out value="${cust.custId}"/>">Update</a></td>
-                            <td><a href="CustomerController?action=delete&custId=<c:out value="${cust.custId}"/>">Delete</a></td>
+                            
                         </tr>
                     </c:forEach>
 

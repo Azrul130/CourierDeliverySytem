@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>Login Page</h1>
-	<form>
+        <form action="processLogin.jsp" method="post">
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" required>
                 
