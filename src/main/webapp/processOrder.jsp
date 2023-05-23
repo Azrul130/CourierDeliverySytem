@@ -9,6 +9,7 @@
 <%@page import="java.sql.DriverManager" %>
 <%@page import="java.sql.Connection" %>
 <%@page import="java.sql.*" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,12 +41,12 @@
         //Assign each value to respective colums for student's table...(C-Create)
                
         myPS.setString(1, myOrder.getParcelId());
-        myPS.setBigDecimal(2, myOrder.getWeight());
+        myPS.setString(2, myOrder.getWeight());
         myPS.setString(3, myOrder.getDescription() );
         myPS.setString(4, myOrder.getRecipientName() );
         myPS.setString(5, myOrder.getRecipientAddress() );
         
-        try{
+ 
         result = myPS.executeUpdate();
                  
         if (result > 0){
@@ -63,9 +64,7 @@
         out.print("</fieldset>");
             }
             
-            }catch(SQLException e){
-            e.printStackTrace();
-            }
+      
             
         out.println("Step5 : Close database connection...!");
         myConnection.close();
