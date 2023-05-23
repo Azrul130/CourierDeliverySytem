@@ -64,17 +64,11 @@
                                role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Services</a>
                             <div class="dropdown-menu" aria-labelledby="serviceDropdown">
-                                <c:choose>
-                                    <c:when test="${empty sessionScope.user}">
-                                        <a class="dropdown-item" href="order.jsp">Create Order</a>
-                                        <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a class="dropdown-item" href="#">Logout</a>
-                                        <a class="dropdown-item" href="#">Settings</a>
-                                    </c:otherwise>
-                                </c:choose>
-                                        
+
+                                <a class="dropdown-item" href="order.jsp">Create Order</a>
+                                <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
+
+
                             </div>
                         </li>
                         <li class="nav-item">

@@ -51,6 +51,7 @@
                 if (emp != null && emp.getUsername() != null && emp.getUsername().equals(username) 
                     && emp.getPassword().equals(pass) ){
                     out.print("<h1>login Success</h1>");
+                    session.setAttribute("user", emp);
                     response.sendRedirect("AdminManagement.jsp");
                 } else {
                     request.setAttribute("loginStatus", false);
@@ -78,7 +79,8 @@
                 if (cust != null && cust.getUsername() != null && cust.getUsername().equals(username) 
                     && cust.getPassword().equals(pass) ){
                     out.print("<h1>login Success</h1>");
-                    response.sendRedirect("index.jsp");
+                    session.setAttribute("user", cust);
+                    response.sendRedirect("CustMain.jsp");
                 } else {
                     request.setAttribute("loginStatus", false);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
@@ -87,6 +89,6 @@
                 con.close();
             }
         %>
-        <h1>test</h1>
+        
     </body>
 </html>
