@@ -29,7 +29,7 @@
 
 
         <div id="customerForm">
-            <form action="tregistration.jsp" method="post">
+            <form action="#" method="post">
                 <div>
                     Registration Type:
                     <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)" checked>
