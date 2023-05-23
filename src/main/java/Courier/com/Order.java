@@ -15,7 +15,7 @@ public class Order {
     private String ParcelId;
     private String recipientName;
     private String recipientAddress;
-    private BigDecimal weight;
+    private String weight;
     private String Description;
 
     public String getParcelId() {
@@ -42,11 +42,11 @@ public class Order {
         this.recipientAddress = recipientAddress;
     }
 
-    public BigDecimal getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(BigDecimal weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
