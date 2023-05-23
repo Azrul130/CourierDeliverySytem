@@ -60,14 +60,14 @@
                             <a class="nav-link" href="index.jsp">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown"
+                            <a class="nav-link dropdown-toggle" href="index.jsp" id="serviceDropdown"
                                role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Services</a>
                             <div class="dropdown-menu" aria-labelledby="serviceDropdown">
                                 <c:choose>
                                     <c:when test="${empty sessionScope.user}">
                                         <a class="dropdown-item" href="order.jsp">Create Order</a>
-                                        <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
+                                        <a class="dropdown-item" href="ZviewOrder.jsp">View Order</a>
                                     </c:when>
                                     <c:otherwise>
                                         <a class="dropdown-item" href="#">Logout</a>
