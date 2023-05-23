@@ -15,7 +15,7 @@ import java.util.Random;
  *
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
-public class Employee extends Account{
+public class Employee {
     private String EmployeeId;
     private String username;
     private String name;
@@ -213,4 +213,5 @@ public class Employee extends Account{
         
         return generatedEmpId;
     }
+
 }

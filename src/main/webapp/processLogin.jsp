@@ -17,6 +17,8 @@
         <title>Process Login</title>
     </head>
     <body>
+        <jsp:useBean id="customer" class="com.mycompany.courierdeliverysystem.model.Customer" scope="session" />
+        <jsp:useBean id="emp" class="com.mycompany.courierdeliverysystem.model.Employee" scope="session" />
         <%
             int loginType = Integer.parseInt(request.getParameter("loginType"));
             String username = request.getParameter("username");
@@ -29,7 +31,7 @@
            
             if (loginType == 2){
         %>
-        <jsp:useBean id="emp" class="com.mycompany.courierdeliverysystem.model.Employee" scope="session" />
+        
         <%
             String Query = "SELECT * FROM employee where username = ?";
             PreparedStatement ps = con.prepareStatement(Query);
@@ -61,7 +63,7 @@
         %>
         
         <% }else if { %>
-        <jsp:useBean id="customer" class="com.mycompany.courierdeliverysystem.model.Customer" scope="session" />
+        
         <% } %>
         
 </html>
