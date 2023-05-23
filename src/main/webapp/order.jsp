@@ -23,14 +23,14 @@
         
         <h2>Create Order</h2>
 
-        <form action="ZprocessOrder.jsp" method="POST"><table>              
+        <form action="processOrder.jsp" method="POST"><table>              
 
                 <tr>
                     <td>
                         <label for="recipientName">Recipient Name:</label>
                     </td>
                     <td>
-                        <input type="text" id="recipientName" name="recipientName" placeholder="Enter recipient name" required><br/>
+                        <input type="text" id="recipientName" name="recipientName" required><br/>
                     </td>
                 </tr>
 
@@ -39,7 +39,7 @@
                         <label for="recipientAddress">Recipient Address:</label>
                     </td>
                     <td>
-                        <input type="text" id="recipientAddress" name="recipientAddress" placeholder="Enter recipient address" required><br/>
+                        <input type="text" id="recipientAddress" name="recipientAddress" required><br/>
                     </td>
                 </tr>
 
@@ -48,7 +48,7 @@
                         <label for="weight">Package Weight:</label>
                     </td>
                     <td>
-                        <input type="text" id="weight" name="weight" placeholder="Enter pakage weight" required><br/>
+                        <input type="number" id="weight" name="weight" min="0" required><br/>
                     </td>
                 </tr>
 
@@ -57,7 +57,7 @@
                         <label for="Description">Package Description:</label>
                     </td>
                     <td>
-                        <input type="text" id="Description" name="Description" placeholder="Package description" required><br/>
+                        <input type="text" id="Description" name="Description" required><br/>
                     </td>
                 </tr>
             </table>
