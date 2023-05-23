@@ -13,19 +13,19 @@ body {
     color: #333;
 }
 
-h1, p {
+h1 {
     text-align: center;
     margin-top: 50px;
     color: white;
 }
 
-h2 {
+h2, p {
     text-align: center;
     margin-top: 50px;
     color: black;
 }
 
-form z{
+form {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
@@ -91,4 +91,17 @@ input[type="reset"] {
 
 input[type="reset"]:hover {
     background-color: #3e8e41;
+}
+
+.print-button, .pay-button {
+    width : 18%;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
 }
