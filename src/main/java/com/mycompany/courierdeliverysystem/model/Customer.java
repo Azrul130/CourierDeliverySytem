@@ -29,7 +29,7 @@ public class Customer extends Account {
         this.name = name;
         this.password = pass;
         this.phone = phone;
-        this.custId = generateRandomCustId();
+        
     }
 
     public Customer(String id, String un, String name, String pass, String email, String phone, String type) {
@@ -136,63 +136,11 @@ public class Customer extends Account {
     }
     
     //Auto-create CustId
-    public String generateRandomCustId() {
-        String generatedCustId = "";
-
-        // Generate random number
-        Random random = new Random();
-        int randomNumber = random.nextInt(90000) + 10000; // Random number between 10000 and 99999
-
-        // Combine 'C' and random number
-        generatedCustId = "C" + randomNumber;
-
-        // Check if generated CustId already exists in the database
-        boolean isUnique = false;
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish database connection
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem");
-
-            // Prepare SQL statement to check if CustId already exists
-            String query = "SELECT * FROM customer WHERE custId = ?";
-            statement = connection.prepareStatement(query);
-            statement.setString(1, generatedCustId);
-
-            // Execute the query
-            resultSet = statement.executeQuery();
-
-            // Check if any row is returned
-            if (!resultSet.next()) {
-                // CustId is unique
-                isUnique = true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close the database resources
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // If generated CustId is not unique, recursively call the method to generate a new one
-        if (!isUnique) {
-            generatedCustId = generateRandomCustId();
-        }
-        
-        return generatedCustId;
-    }
+    public String generateCustId() {
+    // Generate a random integer between 0 and 9999
+    int randomNum = new Random().nextInt(10000);
+    // Format the number with leading zeros to make the total length 4 digits
+    String formattedNum = String.format("%04d", randomNum);
+    return "CU" + formattedNum;
+}
 }
