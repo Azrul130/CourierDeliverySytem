@@ -4,15 +4,11 @@
  */
 package com.mycompany.courierdeliverysystem.model;
 
-import java.sql.*;
-import java.util.Random;
-
 /**
  *
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
-public class Customer extends Account {
-
+public class Customer {
     private String custId;
     private String username;
     private String name;
@@ -135,12 +131,5 @@ public class Customer extends Account {
         this.Account_Type = Account_Type;
     }
     
-    //Auto-create CustId v2
-    public String generateCustId() {
-    // Generate a random integer between 0 and 9999
-    int randomNum = new Random().nextInt(10000);
-    // Format the number with leading zeros to make the total length 4 digits
-    String formattedNum = String.format("%04d", randomNum);
-    return "CU" + formattedNum;
-}
+    
 }
