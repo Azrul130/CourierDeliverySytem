@@ -88,9 +88,9 @@
                 
                 <label for="occupation">Occupation</label>
                 <select id="occupation" name="occupation" class="form-select">
-                    <option>Rider</option>
-                    <option>Receptionist</option>
-                    <option>Manager</option>
+                    <option value="Rider">Rider</option>
+                    <option value="Receptionist">Receptionist</option>
+                    <option value="Manager">Manager</option>
                 </select><br><br/>
 
                 <input type="submit" value="Register"><br>

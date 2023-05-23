@@ -1,6 +1,6 @@
 <%-- 
-    Document   : EmployeeMain
-    Created on : 19 May 2023, 4:26:53 pm
+    Document   : CustMain
+    Created on : 23 May 2023, 12:48:08 pm
     Author     : MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
 --%>
 
@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="index.jsp" flush="true" />
+        <jsp:include flush="true" page="header.jsp" />
+        
+        
+        <jsp:include flush="true" page="footer.html" />
     </body>
 </html>
