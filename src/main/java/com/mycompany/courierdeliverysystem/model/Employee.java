@@ -22,15 +22,14 @@ public class Employee {
     private String password;
     private String email;
     private String phone;
-    private String Account_Type;
     private String Occupation;
+    private String Account_type;
 
     
-    public Employee(String un, String name, String pass, String email, String phone, String type, String occ) {
+    public Employee(String un, String name, String pass, String email, String phone,String type ,String occ) {
         super();
         this.username = un;
         this.Occupation = occ;
-        this.Account_Type = type;
         this.email = email;
         this.name = name;
         this.password = pass;
@@ -38,12 +37,15 @@ public class Employee {
         this.EmployeeId = generateRandomEmpId();
     }
 
-    public Employee(String id, String un, String name, String pass, String email, String phone, String type, String occ) {
+    public Employee(String id, String un, String name, String pass, String email, String phone,String type, String occ) {
         super();
     }
+    public Employee(){}
     /**
      * @return the EmployeeId
      */
+    
+    
     public String getEmployeeId() {
         return EmployeeId;
     }
@@ -125,19 +127,6 @@ public class Employee {
         this.phone = phone;
     }
 
-    /**
-     * @return the Account_Type
-     */
-    public String getAccount_Type() {
-        return Account_Type;
-    }
-
-    /**
-     * @param Account_Type the Account_Type to set
-     */
-    public void setAccount_Type(String Account_Type) {
-        this.Account_Type = Account_Type;
-    }
 
     /**
      * @return the Occupation
@@ -212,6 +201,20 @@ public class Employee {
         }
         
         return generatedEmpId;
+    }
+
+    /**
+     * @return the Account_type
+     */
+    public String getAccount_type() {
+        return Account_type;
+    }
+
+    /**
+     * @param Account_type the Account_type to set
+     */
+    public void setAccount_type(String Account_type) {
+        this.Account_type = Account_type;
     }
 
 }
