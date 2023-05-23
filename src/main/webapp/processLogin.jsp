@@ -80,7 +80,9 @@
                     && cust.getPassword().equals(pass) ){
                     out.print("<h1>login Success</h1>");
                     session.setAttribute("user", cust);
-                    response.sendRedirect("CustMain.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("CustMain.jsp");
+                    dispatcher.forward(request, response);
+                    
                 } else {
                     request.setAttribute("loginStatus", false);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
@@ -89,6 +91,6 @@
                 con.close();
             }
         %>
-        
+
     </body>
 </html>

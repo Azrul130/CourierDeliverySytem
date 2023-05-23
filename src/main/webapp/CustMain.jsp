@@ -19,7 +19,7 @@
     </head>
     <body>
         <jsp:include flush="true" page="header.jsp" />
-        
+
         <main class="flex-shrink-0">
             <header class="bg-light text-center py-5">
                 <h1>Welcome to the Courier Delivery System <%= ((Customer) session.getAttribute("cust")).getName() %></h1>
@@ -44,5 +44,8 @@
         </main>
 
         <jsp:include flush="true" page="footer.html" />
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
+        integrity="sha384-"></script>
     </body>
 </html>
