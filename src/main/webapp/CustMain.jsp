@@ -19,6 +19,7 @@
     </head>
     <body>
         <jsp:include flush="true" page="header.jsp" />
+        
         <main class="flex-shrink-0">
             <header class="bg-light text-center py-5">
                 <h1>Welcome to the Courier Delivery System <%= ((Customer) session.getAttribute("cust")).getName() %></h1>
