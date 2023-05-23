@@ -93,6 +93,7 @@ public class CustomerController extends HttpServlet {
             dao.updateCust(cust);
         }else {
             dao.addCust(cust);
+            
         }
         RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
         request.setAttribute("users", dao.viewAllCust() );

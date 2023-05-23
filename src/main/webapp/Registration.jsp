@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.mycompany.Controller.CustomerController" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,7 +29,7 @@
 
 
         <div id="customerForm">
-            <form>
+            <form action="tregistration.jsp" method="post">
                 <div>
                     Registration Type:
                     <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)" checked>
@@ -39,7 +40,7 @@
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username">
                 
-                <label for="name">Username</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name">
 
                 <label for="email">Email</label>
