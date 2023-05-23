@@ -22,7 +22,7 @@
         <h2>View Order</h2>
         <div id="table">
         <table>
-            <tr style="background-color: red; ">
+            <tr id="tableheader">
             <th>Tracking Number</th>
             <th>Sender Name</th>
             <th>Sender Address</th>
