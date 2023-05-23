@@ -23,6 +23,7 @@
                 border-radius: 5px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 margin: 10px;
+                width: 100%;
             }
         </style>
     </head>
@@ -31,39 +32,38 @@
 
         <div class="container container-s text-center">
             <h1><strong>Customer Management</strong></h1>
-            <div class="text-center">
-                <table class="table table-striped">
-                    <thead>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Id</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone No</th>
+                        <th scope="col">Email</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% int count = 1; %>
+                    <c:forEach items="${cust}" var="cust">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Customer Id</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Phone No</th>
-                            <th scope="col">Email</th>
+                            <th scope="row"><%=count%></th>
+                            <% count++; %>
+                            <td><c:out value="${cust.custId}"/></td>
+                            <td><c:out value="${cust.username}"/></td>
+                            <td><c:out value="${cust.name}"/></td>
+                            <td><c:out value="${cust.phone}"/></td>
+                            <td><c:out value="${cust.email}"/></td>
+                            <td><a href="CustomerController?action=edit&custId=<c:out value="${cust.custId}"/>">Update</a></td>
+                            <td><a href="CustomerController?action=delete&custId=<c:out value="${cust.custId}"/>">Delete</a></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
+                    </c:forEach>
+
+                </tbody>
+            </table>
+
         </div>
 
         <jsp:include flush="true" page="footer.html" />

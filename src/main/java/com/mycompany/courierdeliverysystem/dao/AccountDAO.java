@@ -25,7 +25,7 @@ public class AccountDAO {
     private static final String pass = "admin";
     
     //SQL Query
-    private static final String Add_New_Customer = "INSERT INTO customer (CustId, username, CustName, Password, CustPhoneNo, email) values (?,?,?,?,?);";
+    private static final String Add_New_Customer = "INSERT INTO customer (CustId, username, CustName, Password, CustPhoneNo, email) values (?,?,?,?,?,?)";
     private static final String Add_New_Employee = "INSERT INTO employee (EmployeeId, username, password, Name, phoneNo, email, Occupation) values (?,?,?,?,?,?,?)";
     private static final String View_All_Customer = "SELECT * FROM customer";
     private static final String View_Customer_By_Id = "SELECT * FROM customer WHERE CustId = ?";
