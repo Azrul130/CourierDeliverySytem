@@ -24,6 +24,15 @@
                 margin: auto;
                 width: 90%;
             }
+            #container {
+                margin:auto;
+                margin-bottom: 200px;
+                width: 60%;
+                background-color: #f56e6e;
+                color: #000000;
+                min-width: 30%;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            }
 
 
         </style>
@@ -41,10 +50,15 @@
                 <input type="text" name="driverId" id="driverId" required><br><br>
 
                 <input type="submit" value="Assign Parcel">
+
+
             </form>
 
         </div>
-
+        <div id="container">
+            <p>Driver details</p>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
         <!--Driver list available-->
 
         <jsp:include page="footer.html" flush="true" />
