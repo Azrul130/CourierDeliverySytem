@@ -135,7 +135,7 @@ public class Customer extends Account {
         this.Account_Type = Account_Type;
     }
     
-    //Auto-create CustId
+    //Auto-create CustId v2
     public String generateCustId() {
     // Generate a random integer between 0 and 9999
     int randomNum = new Random().nextInt(10000);
