@@ -4,11 +4,15 @@
  */
 package com.mycompany.courierdeliverysystem.model;
 
+import java.sql.*;
+import java.util.Random;
+
 /**
  *
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
 public class Customer {
+
     private String custId;
     private String username;
     private String name;
@@ -25,13 +29,17 @@ public class Customer {
         this.name = name;
         this.password = pass;
         this.phone = phone;
-        
+
     }
 
     public Customer(String id, String un, String name, String pass, String email, String phone, String type) {
         super();
     }
-    public Customer(){};
+
+    public Customer() {
+    }
+
+    ;
 
     /**
      * @return the custId
@@ -130,6 +138,6 @@ public class Customer {
     public void setAccount_Type(String Account_Type) {
         this.Account_Type = Account_Type;
     }
-    
-    
+
+  
 }
