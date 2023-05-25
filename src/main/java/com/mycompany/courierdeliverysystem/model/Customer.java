@@ -142,38 +142,45 @@ public class Customer {
         this.Account_Type = Account_Type;
     }
 
-    // Auto-generate CustId with prefix "C" and check uniqueness
-    public String generateCustId() {
-        String prefix = "C";
-        String generatedId = prefix + generateRandomString(5); // Generate a random 5-character string
-        String url = "jdbc:mysql://localhost:3306/courierdeliverysystem";
-        String username = "root";
-        String password = "admin";
 
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            String query = "SELECT COUNT(*) FROM Customer WHERE CustId = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+// Auto-generate CustId with prefix "C" and check uniqueness
+public String generateCustId() {
+    String prefix = "C";
+    String generatedId = prefix + generateRandomString(5); // Generate a random 5-character string
+    String url = "jdbc:mysql://localhost/courierdeliverysystem";
+    String username = "root";
+    String password = "admin";
+
+    try  {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(url, username, password);
+        String query = "SELECT COUNT(*) FROM Customer WHERE CustId = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, generatedId);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        int count = resultSet.getInt(1);
+        while (count > 0) {
+            generatedId = prefix + generateRandomString(5); // Regenerate if the id already exists
             statement.setString(1, generatedId);
-            ResultSet resultSet = statement.executeQuery();
+            resultSet = statement.executeQuery();
             resultSet.next();
-            int count = resultSet.getInt(1);
-            while (count > 0) {
-                generatedId = prefix + generateRandomString(5); // Regenerate if the id already exists
-                statement.setString(1, generatedId);
-                resultSet = statement.executeQuery();
-                resultSet.next();
-                count = resultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            count = resultSet.getInt(1);
         }
-
-        return generatedId;
+    } catch (SQLIntegrityConstraintViolationException e) {
+        // Duplicate entry exception occurred, handle it by regenerating the generatedId
+        generatedId = generateCustId(); // Recursive call to regenerate the CustId
+    } catch (SQLException | ClassNotFoundException e) {
+        e.printStackTrace();
     }
+
+    return generatedId;
+}
+
 
     // Generate a random alphanumeric string of specified length
     public String generateRandomString(int length) {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String characters = "0123456789";
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for (int i = 0; i < length; i++) {
