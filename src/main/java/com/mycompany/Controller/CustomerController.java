@@ -82,7 +82,7 @@ public class CustomerController extends HttpServlet {
         String action = request.getParameter("action");
         
         Customer cust = new Customer();
-        cust.setCustId("C00003");
+        cust.setCustId(cust.generateCustId());
         cust.setName(request.getParameter("name"));
         cust.setUsername(request.getParameter("username"));
         cust.setPassword(request.getParameter("password"));

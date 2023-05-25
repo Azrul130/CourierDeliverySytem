@@ -53,7 +53,7 @@ public class AccountDAO {
         try {
             Connection con = AccountDAO.getConnection();
             PreparedStatement ps = con.prepareStatement(Add_New_Customer);
-            ps.setString(1, cust.getCustId() );
+            ps.setString(1, "C00004" );
             ps.setString(2, cust.getUsername() );
             ps.setString(3, cust.getName() );
             ps.setString(4, cust.getPassword() );
@@ -141,4 +141,7 @@ public class AccountDAO {
             e.printStackTrace();
         }
     }
+    
+    
+    
 }

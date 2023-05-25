@@ -1,6 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Author : MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
+ * s62903
  */
 package com.mycompany.courierdeliverysystem.model;
 
@@ -23,6 +25,7 @@ public class Customer {
 
     public Customer(String un, String name, String pass, String email, String phone, String type) {
         super();
+        this.custId = generateCustId();
         this.username = un;
         this.Account_Type = type;
         this.email = email;
@@ -139,5 +142,45 @@ public class Customer {
         this.Account_Type = Account_Type;
     }
 
-  
+    // Auto-generate CustId with prefix "C" and check uniqueness
+    public String generateCustId() {
+        String prefix = "C";
+        String generatedId = prefix + generateRandomString(5); // Generate a random 5-character string
+        String url = "jdbc:mysql://localhost:3306/courierdeliverysystem";
+        String username = "root";
+        String password = "admin";
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "SELECT COUNT(*) FROM Customer WHERE CustId = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, generatedId);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+            while (count > 0) {
+                generatedId = prefix + generateRandomString(5); // Regenerate if the id already exists
+                statement.setString(1, generatedId);
+                resultSet = statement.executeQuery();
+                resultSet.next();
+                count = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return generatedId;
+    }
+
+    // Generate a random alphanumeric string of specified length
+    public String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            sb.append(characters.charAt(index));
+        }
+        return sb.toString();
+    }
+
 }
