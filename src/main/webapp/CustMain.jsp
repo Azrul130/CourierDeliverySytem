@@ -22,7 +22,7 @@
 
         <main class="flex-shrink-0">
             <header class="bg-light text-center py-5">
-                <h1>Welcome to the Courier Delivery System <%= ((Customer) session.getAttribute("cust")).getName() %></h1>
+                <h1>Welcome to the Courier Delivery System <br> <%= ((Customer) session.getAttribute("cust")).getName() %></h1>
                 <p class="lead">Efficient and reliable delivery services at your doorstep</p>
                 <a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a>
             </header>

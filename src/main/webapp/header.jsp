@@ -89,7 +89,7 @@
                                         <a class="dropdown-item" href="Registration.jsp">Sign Up</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <a class="dropdown-item" href="#">Logout</a>
+                                        <a class="dropdown-item" href="index.jsp">Logout</a>
                                         <a class="dropdown-item" href="#">Settings</a>
                                     </c:otherwise>
                                 </c:choose>
