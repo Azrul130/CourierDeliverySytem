@@ -4,6 +4,7 @@
  */
 package com.mycompany.Controller;
 
+import com.mycompany.courierdeliverysystem.dao.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,22 +16,16 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
-public class Register extends HttpServlet {
+public class EmployeeController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-        
+    private static String INSERT = "/Registration.jsp";
+    private static String EDIT = "#";
+    private static String List_Employee = "/EmployeeManagement.jsp";
+    private AccountDAO dao;
+    
+    public EmployeeController () throws ClassNotFoundException {
+        super();
+        dao = new AccountDAO();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -45,7 +40,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**
@@ -59,7 +54,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**
