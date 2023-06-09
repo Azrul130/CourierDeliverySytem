@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Courier.com;
+package com.mycompany.courierdeliverysystem.model;
 import Courier.com.trackingNumber;
-import java.math.BigDecimal;
 
 /**
  *
@@ -12,18 +11,35 @@ import java.math.BigDecimal;
  */
 
 public class Order {
-    private String ParcelId;
+    private String orderid;
     private String recipientName;
     private String recipientAddress;
-    private BigDecimal weight;
+    private double weight;
     private String Description;
+    private String parceltype;
 
-    public String getParcelId() {
-        return ParcelId;
+    public Order() {
+    }
+    
+
+    public Order(String orderid, String recipientName, String recipientAddress, double weight, String Description, String parceltype) {
+        super();
+        this.orderid = orderid;
+        this.recipientName = recipientName;
+        this.recipientAddress = recipientAddress;
+        this.weight = weight;
+        this.Description = Description;
+        this.parceltype = parceltype;
     }
 
-    public void ParcelId() {
-        ParcelId = trackingNumber.TrackingNumber() ;
+    
+    
+    public String getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(String orderid) {
+        orderid = trackingNumber.TrackingNumber() ;
     }
 
     public String getRecipientName() {
@@ -42,11 +58,11 @@ public class Order {
         this.recipientAddress = recipientAddress;
     }
 
-    public BigDecimal getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(BigDecimal weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -56,6 +72,14 @@ public class Order {
 
     public void setDescription(String Description) {
         this.Description = Description;
+    }
+
+    public String getParceltype() {
+        return parceltype;
+    }
+
+    public void setParceltype(String parceltype) {
+        this.parceltype = parceltype;
     }
     
     
