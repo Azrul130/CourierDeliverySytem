@@ -5,6 +5,7 @@
 package com.mycompany.courierdeliverysystem.dao;
 
 import com.mycompany.courierdeliverysystem.model.Customer;
+import com.mycompany.courierdeliverysystem.model.Employee;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -142,6 +143,25 @@ public class AccountDAO {
         }
     }
     
-    
+    public static int addEmp(Employee emp){
+        int status = 0;
+        try {
+            Connection con = AccountDAO.getConnection();
+            PreparedStatement ps = con.prepareStatement(Add_New_Employee);
+            ps.setString(1, emp.generateRandomEmpId() );
+            ps.setString(2, emp.getUsername());
+            ps.setString(3, emp.getPassword());
+            ps.setString(4, emp.getName());
+            ps.setString(5, emp.getPhone());
+            ps.setString(6, emp.getEmail());
+            ps.setString(7, emp.getOccupation());
+            
+            status = ps.executeUpdate();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
     
 }
