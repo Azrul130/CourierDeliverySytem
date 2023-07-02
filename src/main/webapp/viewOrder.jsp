@@ -20,6 +20,8 @@
     </head>
     <body>
          <jsp:include page="header.jsp" flush="true" />
+         <br><!-- comment -->
+         <br><!-- comment -->
         <div class="row">
             <div class="container">
                 <h3  class="text-center">Order Details</h3>
@@ -69,8 +71,8 @@
 
                             <c:forEach var="order" items="${listOrder}">
                                 <td>
-                                    <a href="edit?carid=<c:out value="${carpricelist.carid}" />">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="delete?carid=<c:out value="${carpricelist.carid}" />">Delete</a>
+                                    <a href="edit?carid=<c:out value="${order.orderid}" />">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="delete?carid=<c:out value="${order.orderid}" />">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -16,14 +16,14 @@ import java.util.Random;
  * @author Azrul Hafizam
  */
 public class TrackingGenerate {
-     private static final String PREFIX = "EM";
+
+    private static final String PREFIX = "EM";
     private static final int NUM_CHARS = 6;
     private static final String CHARACTERS = "0123456789";
     private static final Random RANDOM = new Random();
     private static final String URL = "jdbc:mysql://localhost:3306/courierdeliverysystem";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "admin";
-
 
     private static String generateRandomTracking() throws SQLException {
         Connection conn = null;
@@ -59,4 +59,3 @@ public class TrackingGenerate {
         return ParcelId;
     }
 }
-

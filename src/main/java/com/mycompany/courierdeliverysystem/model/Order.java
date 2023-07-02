@@ -12,6 +12,7 @@ import Courier.com.trackingNumber;
 
 public class Order {
     private String orderid;
+    private String custId;
     private String recipientName;
     private String recipientAddress;
     private double weight;
@@ -20,11 +21,10 @@ public class Order {
 
     public Order() {
     }
-    
 
-    public Order(String orderid, String recipientName, String recipientAddress, double weight, String Description, String parceltype) {
+    public Order(String custId, String recipientName, String recipientAddress, double weight, String Description, String parceltype) {
         super();
-        this.orderid = orderid;
+        this.custId = custId;
         this.recipientName = recipientName;
         this.recipientAddress = recipientAddress;
         this.weight = weight;
@@ -32,7 +32,13 @@ public class Order {
         this.parceltype = parceltype;
     }
 
-    
+    public String getCustId() {
+        return custId;
+    }
+
+    public void setCustId(String custId) {
+        this.custId = custId;
+    }    
     
     public String getOrderid() {
         return orderid;
@@ -81,8 +87,4 @@ public class Order {
     public void setParceltype(String parceltype) {
         this.parceltype = parceltype;
     }
-    
-    
-    
-
 }
