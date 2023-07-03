@@ -87,8 +87,24 @@
                     }
                 }
 
-                occupationInput.style.display = occupationInput.style.display === "none" ? "block" : "none";
-                occupationSelect.style.display = occupationSelect.style.display === "none" ? "block" : "none";
+                if (occupationInput.style.display === "none") {
+                    occupationInput.style.display = "block";
+                    occupationSelect.style.display = "none";
+                } else {
+                    occupationInput.style.display = "none";
+                    occupationSelect.style.display = "block";
+
+                    // Set the default selected option in the "occupation" select element
+                    var selectedValue = occupationInput.value;
+                    var options = occupationSelect.options;
+                    for (var j = 0; j < options.length; j++) {
+                        if (options[j].value === selectedValue) {
+                            occupationSelect.selectedIndex = j;
+                            break;
+                        }
+                    }
+                }
+
                 submitButton.style.display = submitButton.style.display === "none" ? "block" : "none";
             }
         </script>
