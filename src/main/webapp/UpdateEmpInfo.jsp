@@ -77,75 +77,73 @@
         <script>
             function toggleEdit() {
                 var inputs = document.querySelectorAll('.form-group input');
+                var occupationInput = document.getElementById('Occupation');
+                var occupationSelect = document.getElementById('occupation');
                 var submitButton = document.getElementById('submitButton');
 
                 for (var i = 0; i < inputs.length; i++) {
-                    if (inputs[i].id !== "driverId") { // Check if the input field is not the driverid field
+                    if (inputs[i].id !== "empId" && inputs[i].id !== "occupation") {
                         inputs[i].readOnly = !inputs[i].readOnly;
                     }
                 }
 
+                occupationInput.style.display = occupationInput.style.display === "none" ? "block" : "none";
+                occupationSelect.style.display = occupationSelect.style.display === "none" ? "block" : "none";
                 submitButton.style.display = submitButton.style.display === "none" ? "block" : "none";
             }
         </script>
+
     </head>
     <body>
         <%@include file="header.jsp" %>
         <!-- Page Content -->
         <div class="page-content">
-            <h3>Account Management</h3>
+            <h3>Employee Information</h3>
             <hr>
             <div class="container my-4">
                 <div class="card my-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="card-title"><i class="fas fa-file"></i>Account Information</h3>
+                            <h3 class="card-title"><i class="fas fa-file"></i>Employee Information</h3>
                             <button onclick="toggleEdit()" class="btn btn-primary">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
                         </div>
-                        <form action="DriverController?action=update" method="post">
+                        <form action="emp/update" method="post">
                             <div class="form-group">
-                                <label for="driverId">Driver ID:</label>
-                                <input type="text" id="driverId" name="driverid" value="${account.driverid}" readonly>
+                                <label for="empId">Employee ID:</label>
+                                <input type="text" id="empId" name="empId" value="${existingEmp.employeeId}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" name="username" value="${account.username}" readonly>
+                                <label for="empName">Name:</label>
+                                <input type="text" id="empName" name="empName" value="${existingEmp.name}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="empUsername">Username:</label>
+                                <input type="text" id="empUsername" name="empUsername" value="${existingEmp.username}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input type="text" id="password" name="password" value="${account.password}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Name:</label>
-                                <input type="text" id="name" name="name" value="${account.name}" readonly>
+                                <input type="password" id="password" name="password" value="${existingEmp.password}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" value="${account.email}" readonly>
+                                <input type="email" id="email" name="email" value="${existingEmp.email}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="address">Address:</label>
-                                <input type="text" id="address" name="address" value="${account.address}" readonly>
+                                <label for="phone">Phone No:</label>
+                                <input type="tel" id="phone" name="phone" value="${existingEmp.email} pattern="[0-9]{10,11}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone:</label>
-                                <input type="tel" id="phone" name="phonenum" value="${account.phonenum}" readonly>
+                                <label for="Occupation">Occupation:</label>
+                                <input type="text" id="Occupation" value="${existingEmp.occupation}" readonly><br/>
+                                <select id="occupation" name="occupation" class="form-select" style="display: none;">
+                                    <option value="Rider">Rider</option>
+                                    <option value="Receptionist">Receptionist</option>
+                                    <option value="Manager">Manager</option>
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="licensePlate">License Plate:</label>
-                                <input type="text" id="licensePlate" name="noplate" value="${account.noplate}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="status">Status:</label>
-                                <div class="input-group">
-                                    <select id="status" name="status" class="form-select" readonly>
-                                        <option value="Active" ${account.status == "Active" ? "selected" : ""}>Active</option>
-                                        <option value="Not Active" ${account.status == "Not Active" ? "selected" : ""}>Not Active</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <button type="submit" class="btn btn-primary" id="submitButton" style="display: none;">
                                 <i class="fas fa-check"></i> Save
                             </button>

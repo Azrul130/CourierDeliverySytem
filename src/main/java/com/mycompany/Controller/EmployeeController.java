@@ -26,7 +26,7 @@ import java.util.List;
 public class EmployeeController extends HttpServlet {
 
     private static String INSERT = "/Registration.jsp";
-    private static String EDIT = "UpdateEmpInfo.jsp";
+    private static String EDIT = "/UpdateEmpInfo.jsp";
     private static String List_Employee = "/EmployeeManagement.jsp";
     private AccountDAO dao;
 
@@ -42,7 +42,7 @@ public class EmployeeController extends HttpServlet {
         String pathInfo = request.getPathInfo(); // Get the path info from the request URL
         System.out.println(pathInfo);
         String actionPath = pathInfo.substring(1);
-        
+
         /*System.out.println(actionPath);
         System.out.println("tes");
         System.out.println(request.getServletPath());*/
@@ -51,8 +51,11 @@ public class EmployeeController extends HttpServlet {
                 case "list":
                     employeeList(request, response);
                     break;
-                case "update":
-                    updateEmp(request,response);
+                case "edit":
+                    editEmp(request, response);
+                    break;
+                default:
+                    employeeList(request, response);
                     break;
             }
         } catch (SQLException e) {
@@ -92,8 +95,12 @@ public class EmployeeController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(List_Employee);
         rd.forward(request, response);
     }
-    
-    public void updateEmp(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException{
-        
+
+    public void editEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String empId = request.getParameter("empId");
+        Employee e = dao.viewEmpByID(empId);
+        request.setAttribute("existingEmp", e);
+        RequestDispatcher rd = request.getRequestDispatcher(EDIT);
+        rd.forward(request, response);
     }
 }

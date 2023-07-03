@@ -53,7 +53,7 @@
                                 <td>
                                     <c:out value="${emp.occupation}"/> &nbsp;&nbsp;
                                 </td>
-                                <td><a href="VendorServlet?action=editservice&serviceid=$${emp.employeeId}class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
+                                <td><a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
                                     <a href="VendorServlet?action=deleteservice&serviceid=${emp.employeeId} class="btn btn-secondary">Delete</a>
                                 </td>
                             </tr>
