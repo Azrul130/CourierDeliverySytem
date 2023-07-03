@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     </head>
     <body>
+        <jsp:include flush="true" page="header.jsp" />
         <div class="container">
             <div class="card">
                 <div class="card-body col-md-6">
@@ -31,13 +32,14 @@
                             <th>Phone No</th>
                             <th>Email</th>
                             <th>Occupation</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="emp" items="${listemp}">
+                        <c:forEach var="emp" items="${listEmp}">
                             <tr>
                                 <td>
-                                    <c:out value="${emp.EmployeeId}"/>
+                                    <c:out value="${emp.employeeId}"/>
                                 </td>                               
                                 <td>
                                     <c:out value="${emp.name}"/>
@@ -49,10 +51,10 @@
                                     <c:out value="${emp.email}"/>
                                 </td>
                                 <td>
-                                    <c:out value="${emp.Occupation}"/> &nbsp;&nbsp;
+                                    <c:out value="${emp.occupation}"/> &nbsp;&nbsp;
                                 </td>
-                                <td><a href="VendorServlet?action=editservice&serviceid=$${emp.EmployeeId}class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
-                                    <a href="VendorServlet?action=deleteservice&serviceid=${emp.EmployeeId} class="btn btn-secondary">Delete</a>
+                                <td><a href="VendorServlet?action=editservice&serviceid=$${emp.employeeId}class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
+                                    <a href="VendorServlet?action=deleteservice&serviceid=${emp.employeeId} class="btn btn-secondary">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

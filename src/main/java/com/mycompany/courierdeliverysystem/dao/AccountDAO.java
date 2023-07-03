@@ -41,7 +41,7 @@ public class AccountDAO {
     public static Connection getConnection() {
         Connection con = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(jdbcURL, user, pass);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

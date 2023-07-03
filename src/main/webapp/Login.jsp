@@ -43,7 +43,7 @@
                             Login Type 
                             <input type="radio" id="cust" name="loginType" value="1">
                             <label for="cust">Customer</label>
-                            <input type="radio" id="emp" name="loginType" value="2">
+                            <input type="radio" id="emp" name="loginType" value="2" checked>
                             <label for="emp">Employee</label> <br> <br> 
                         </div>
 

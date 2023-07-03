@@ -26,7 +26,7 @@ import java.util.List;
 public class EmployeeController extends HttpServlet {
 
     private static String INSERT = "/Registration.jsp";
-    private static String EDIT = "#";
+    private static String EDIT = "UpdateEmpInfo.jsp";
     private static String List_Employee = "/EmployeeManagement.jsp";
     private AccountDAO dao;
 
@@ -37,19 +37,28 @@ public class EmployeeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        String action = request.getServletPath();
-
+            throws ServletException, IOException {
+        //String action = request.getServletPath();
+        String pathInfo = request.getPathInfo(); // Get the path info from the request URL
+        System.out.println(pathInfo);
+        String actionPath = pathInfo.substring(1);
+        
+        /*System.out.println(actionPath);
+        System.out.println("tes");
+        System.out.println(request.getServletPath());*/
         try {
-            switch (action) {
+            switch (actionPath) {
                 case "list":
                     employeeList(request, response);
                     break;
+                case "update":
+                    updateEmp(request,response);
+                    break;
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
     }
 
     /**
@@ -82,5 +91,9 @@ public class EmployeeController extends HttpServlet {
         session.setAttribute("listEmp", employee);
         RequestDispatcher rd = request.getRequestDispatcher(List_Employee);
         rd.forward(request, response);
+    }
+    
+    public void updateEmp(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException{
+        
     }
 }
