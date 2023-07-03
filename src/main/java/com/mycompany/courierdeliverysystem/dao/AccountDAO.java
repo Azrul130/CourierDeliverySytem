@@ -142,7 +142,7 @@ public class AccountDAO {
             e.printStackTrace();
         }
     }
-    
+    //add employee
     public static int addEmp(Employee emp){
         int status = 0;
         try {
@@ -163,5 +163,23 @@ public class AccountDAO {
         }
         return status;
     }
-    
+    //list all employee
+    public static List<Employee> viewAllEmp() throws SQLException{
+        List<Employee> empList = new ArrayList<>();
+        try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(View_All_Employee)){
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Employee e = new Employee();
+                e.setUsername(rs.getString("username"));
+                e.setEmployeeId(rs.getString("EmployeeId"));
+                e.setPassword(rs.getString("password"));
+                e.setName(rs.getString("Name"));
+                e.setPhone(rs.getString("phoneNo"));
+                e.setEmail(rs.getString("email"));
+                e.setOccupation(rs.getString("Occupation"));
+                empList.add(e);
+            }
+        }
+        return empList;
+    }
 }
