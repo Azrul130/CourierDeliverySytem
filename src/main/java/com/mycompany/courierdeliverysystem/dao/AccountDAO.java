@@ -200,5 +200,26 @@ public class AccountDAO {
         }
         return e;
     }
-    
+    //update Employee
+    public static void UpdateEmployee(Employee e) throws SQLException{
+        
+        try(Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Edit_Employee)){
+            ps.setString(1, e.getUsername());
+            ps.setString(2, e.getPassword());
+            ps.setString(3, e.getName());
+            ps.setString(4, e.getPhone());
+            ps.setString(5, e.getEmail());
+            ps.setString(6, e.getOccupation());
+            ps.setString(7, e.getEmployeeId());
+            
+            if (ps.executeUpdate() > 0){
+                System.out.println("Update Success!");
+            }else {
+                System.out.println("Update Unsuccessful!");
+            }
+        }
+    }
+
+
+
 }

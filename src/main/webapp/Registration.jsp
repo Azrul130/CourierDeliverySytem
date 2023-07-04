@@ -32,7 +32,7 @@
             <form action="CustomerController?action=add" method="post">
                 <div>
                     Registration Type:
-                    <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)" checked>
+                    <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)">
                     <label for="cust">Customer</label>
                     <input type="radio" id="emp" name="RegistrationType" value="employee" onclick="showForm(this.value)">
                     <label for="emp">Employee</label>
@@ -63,16 +63,16 @@
             <form>
                 <div>
                     Registration Type:
-                    <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)" checked>
+                    <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)">
                     <label for="cust">Customer</label>
                     <input type="radio" id="emp" name="RegistrationType" value="employee" onclick="showForm(this.value)">
                     <label for="emp">Employee</label>
                 </div>
                 
-                 <label for="username">Username</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username">
                 
-                <label for="name">Username</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name">
 
                 <label for="email">Email</label>

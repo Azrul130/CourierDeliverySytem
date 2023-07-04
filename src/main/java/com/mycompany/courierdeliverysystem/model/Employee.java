@@ -36,7 +36,8 @@ public class Employee {
         this.phone = phone;
         this.EmployeeId = generateRandomEmpId();
     }
-
+    
+    
     public Employee(String id, String un, String name, String pass, String email, String phone,String type, String occ) {
         super();
     }
