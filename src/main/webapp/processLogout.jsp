@@ -14,7 +14,7 @@
     <body>
         <%
             session.setAttribute("user", null);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("http://localhost:8080/courierdeliverysystem/");
         %>
     </body>
 </html>
