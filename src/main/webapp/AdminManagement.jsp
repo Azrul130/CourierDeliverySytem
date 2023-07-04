@@ -50,7 +50,7 @@
                     </div>
                     <div class="col container-s text-center">
                         <h2>Employee Management</h2>
-                        <a href="#" class="btn-primary btn btn-c">Go</a>
+                        <a href="emp/list" class="btn-primary btn btn-c">Go</a>
                     </div>
                 </div>
                 <div class="row">

@@ -20,6 +20,7 @@ public class Account {
         this.cust=cust;
     }
     public Account(Employee emp){
-        
+        this.Account_Type = emp.getAccount_type();
+        this.emp = emp;
     }
 }

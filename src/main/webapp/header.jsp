@@ -49,7 +49,19 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="images/delivery-service-icon-6.jpg" alt="" width="35" height="35" class="d-inline-block ">Courier Delivery System</a>
+                <c:set var="logoPath" value="images/delivery-service-icon-6.jpg" />
+                <c:choose>
+                    <c:when test="${pageContext.request.requestURL.toString() == 'http://localhost:8080/courierdeliverysystem/'}">
+                        <c:set var="logoPath" value="${pageContext.request.contextPath}/${logoPath}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="logoPath" value="../${logoPath}" />
+                    </c:otherwise>
+                </c:choose>
+                <a class="navbar-brand" href="#">
+                    <img src="${logoPath}" alt="Logo" width="35" height="35" class="d-inline-block">
+                    Courier Delivery System
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -57,7 +69,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.jsp">Home</a>
+                            <a class="nav-link" href="http://localhost:8080/courierdeliverysystem">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown"

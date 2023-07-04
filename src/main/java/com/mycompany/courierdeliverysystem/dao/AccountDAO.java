@@ -41,7 +41,7 @@ public class AccountDAO {
     public static Connection getConnection() {
         Connection con = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(jdbcURL, user, pass);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -142,7 +142,7 @@ public class AccountDAO {
             e.printStackTrace();
         }
     }
-    
+    //add employee
     public static int addEmp(Employee emp){
         int status = 0;
         try {
@@ -162,6 +162,43 @@ public class AccountDAO {
             e.printStackTrace();
         }
         return status;
+    }
+    //list all employee
+    public static List<Employee> viewAllEmp() throws SQLException{
+        List<Employee> empList = new ArrayList<>();
+        try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(View_All_Employee)){
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Employee e = new Employee();
+                e.setUsername(rs.getString("username"));
+                e.setEmployeeId(rs.getString("EmployeeId"));
+                e.setPassword(rs.getString("password"));
+                e.setName(rs.getString("Name"));
+                e.setPhone(rs.getString("phoneNo"));
+                e.setEmail(rs.getString("email"));
+                e.setOccupation(rs.getString("Occupation"));
+                empList.add(e);
+            }
+        }
+        return empList;
+    }
+    //View employee by id
+    public static Employee viewEmpByID(String id) throws SQLException{
+        Employee e = new Employee();
+        try(Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(View_Employee_By_Id)){
+            ps.setString(1, id);
+            ResultSet rs  = ps.executeQuery();
+            while (rs.next()){
+                e.setUsername(rs.getString("username"));
+                e.setEmployeeId(rs.getString("EmployeeId"));
+                e.setPassword(rs.getString("password"));
+                e.setName(rs.getString("Name"));
+                e.setPhone(rs.getString("phoneNo"));
+                e.setEmail(rs.getString("email"));
+                e.setOccupation(rs.getString("Occupation"));
+            }
+        }
+        return e;
     }
     
 }
