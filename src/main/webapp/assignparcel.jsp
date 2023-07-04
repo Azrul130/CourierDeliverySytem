@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,35 +19,127 @@
                 text-align: center;
                 font-family: comic sans ms;
             }
-            div{
+            #form{
                 text-align: center;
                 background-color: rgb(253, 101, 101);
                 margin: auto;
+                width: 50%;
+            }
+            label{
+                display: inline-block;
+                width:20%;
+            }
+            table{
+                margin: auto;
+                background-color: red;
                 width: 90%;
             }
-
 
         </style>
     </head>
     <body>
-        <jsp:include page="header.jsp" flush="true" />
+        <%--<jsp:include page="header.jsp" flush="true" />--%>
 
         <h1>Assign parcel to the driver</h1>
-        <div>
-            <form method="post" action="assignParcel.jsp">
+        <div id="form">
+            <form method="post" action="assignparcel.jsp">
                 <label for="parcelId">Parcel ID:</label>
                 <input type="text" name="parcelId" id="parcelId" required><br><br>
 
                 <label for="driverId">Driver ID:</label>
                 <input type="text" name="driverId" id="driverId" required><br><br>
 
+                <label for="destination">Destination:</label>
+                <input type="text" name="Destination" id="Destination" required><br><br>
+
                 <input type="submit" value="Assign Parcel">
             </form>
+        </div>
+        <br><br>
+        <%
+            try {
 
+                String ParcelId = request.getParameter("parcelId");
+                String driverId = request.getParameter("driverID");
+                String Destination = request.getParameter("Destination");
+                
+                if (ParcelId != null || !ParcelId.isEmpty()) {
+
+                    ResultSet rs = null;
+                    PreparedStatement st = null;
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem", "root", "admin");
+
+                    st = con.prepareStatement("INSERT INTO delivery (RiderId,parcelId,Destination) values (?,?,?)");
+                    st.setString(1, driverId);
+                    st.setString(2, ParcelId);
+                    st.setString(3, Destination);
+                    rs = st.executeQuery();
+
+                }
+            } catch (Exception e) {
+
+            }
+        %>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parcel ID</th>
+                        <th>Destination</th>
+                        <th>Rider ID</th>
+                        <th>Rider Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        try {
+
+                            //prepare the connection
+                            ResultSet rs;
+                            PreparedStatement st;
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem", "root", "admin");
+
+                            //prepare the statement
+                            st = con.prepareStatement("SELECT * FROM order");
+                            rs = st.executeQuery();
+
+                            while (rs.next()) {
+                    %>
+                    <tr>
+                        <td><%=rs.getString("ParcelId")%></td>
+                        <%
+                            }
+                            st = con.prepareStatement("SELECT * FROM delivery");
+                            rs = st.executeQuery();
+
+                            while (rs.next()) {
+                        %>
+                        <td><%=rs.getString("RiderId")%></td>
+                        <td><%=rs.getString("Destination")%></td>
+                        <%
+                            }
+                            st = con.prepareStatement("SELECT * FROM employee");
+                            rs = st.executeQuery();
+
+                            while (rs.next()) {
+                        %>
+                        <td><%=rs.getString("Name")%></td>
+                    </tr>
+                    <%
+                            }
+                        } catch (Exception e) {
+
+                        }
+                    %>
+                </tbody>
+            </table>
         </div>
 
         <!--Driver list available-->
 
-        <jsp:include page="footer.html" flush="true" />
+        <%--<jsp:include page="footer.html" flush="true" />--%>
     </body>
 </html>
