@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -114,7 +115,7 @@ public class OrderDAO {
     public boolean updateOrder(Order order) {
         boolean rowUpdate = false;
         try (
-                Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Edit_Order)) {
+            Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Edit_Order)) {
             ps.setString(1, order.getRecipientName());
             ps.setString(2, order.getRecipientAddress());
             ps.setDouble(3, order.getWeight());
@@ -156,3 +157,4 @@ public class OrderDAO {
         }
     }
 }
+
