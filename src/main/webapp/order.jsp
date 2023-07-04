@@ -5,7 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.mycompany.courierdeliverysystem.function.CustIdGenerate" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,17 +15,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Create Order</title>
         <link rel="stylesheet" type="text/css" href="Style/orderStyle.css">
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+              crossorigin="anonymous">
     </head>
     <body>
+        <%
+            String orderid = CustIdGenerate.generateOrderId(5);
+        %>
         <jsp:include page="header.jsp" flush="true" />
         <br><!-- comment -->
-        
+
         <h2>Create Order</h2>
 
-        <form action="addorder" method="POST"><table>              
+        <form action="processOrder.jsp" method="POST"><table>              
+
+                <tr>
+                    <td>
+                        <label>Order ID</label>
+                    </td>
+                    <td>
+                        <input type="text" id="orderId" name="orderId" value= "<%=orderid%>" readonly="readonly"><br/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>Customer ID</label>
+                    </td>
+                    <td>
+                        <input type="text" id="custId" name="custId" value="" readonly="readonly"><br/>
+                    </td>
+                </tr>
 
                 <tr>
                     <td>
@@ -60,18 +83,18 @@
                         <input type="text" id="Description" name="Description" required><br/>
                     </td>
                 </tr>
-                       <tr>
+                <tr>
                     <td>
-                        <label for="parceltype">Parcel Type</label>
+                        <label for="parcelType">Parcel Type</label>
                     </td>
                     <td>
-                        <select name="parceltype" size="1">
+                        <select name="parcelType" size="1">
                             <option value="local">Local</option>
                             <option value="Oversea">Oversea</option>
                         </select>
                     </td>
-                       </tr>
-                       <br><!-- comment -->
+                </tr>
+                <br><!-- comment -->
             </table>
             <br><!-- comment -->
             <p>
