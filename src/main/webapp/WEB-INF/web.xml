@@ -16,6 +16,10 @@
         <servlet-name>Account</servlet-name>
         <servlet-class>com.mycompany.Controller.Account</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcessPaymentServlet</servlet-name>
+        <servlet-class>com.mycompany.Controller.ProcessPaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/CustomerController</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Account</servlet-name>
         <url-pattern>/Account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessPaymentServlet</servlet-name>
+        <url-pattern>/ProcessPaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

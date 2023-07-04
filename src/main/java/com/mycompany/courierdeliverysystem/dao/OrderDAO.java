@@ -114,7 +114,7 @@ public class OrderDAO {
     public boolean updateOrder(Order order) {
         boolean rowUpdate = false;
         try (
-                Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Edit_Order)) {
+            Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Edit_Order)) {
             ps.setString(1, order.getRecipientName());
             ps.setString(2, order.getRecipientAddress());
             ps.setDouble(3, order.getWeight());
