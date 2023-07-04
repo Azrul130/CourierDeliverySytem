@@ -125,7 +125,8 @@
                                 <i class="fas fa-edit"></i> Edit
                             </button>
                         </div>
-                        <form action="update" method="post">
+                        <form action="update" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="${existingVeh.vehicleId}" readonly />
                             <div class="form-group">
                                 <label for="VehicleType" class="form-label">Vehicle Type</label>
                                 <input type="text" id="VehicleType" value="${existingVeh.vehicleType}" readonly><br/>
@@ -137,15 +138,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="roadTaxExp" class="form-label">Road Tax Expiry Date</label>
-                                <input type="date" id="roadTaxExp" name="RoadTaxExp" value="${existingVeh.roadTaxExp}" readonly>
+                                <input type="text" pattern="\d{2}/\d{2}/\d{2}" id="roadTaxExp" name="RoadTaxExp" value="${existingVeh.roadTaxExp}" readonly>
                             </div>
                             <div class="form-group">
-                                <c:set var="base64Picture" value="${existingVeh.getBase64Picture()}"/>
+                                <c:set var="base64Picture" value="${existingVeh.getPictureBase64()}"/>
                                 <c:if test="${not empty base64Picture}">
                                     <img src="data:image/png;base64,${base64Picture}" width="100" height="100" />
                                 </c:if>
                                 <label for="picture" class="form-label">Picture</label>
-                                <input type="file" class="form-control" id="picture" name="Picture" accept="image/*" >
+                                <input type="file" class="form-control" id="picture" name="Picture" >
                             </div>
 
                             <button type="submit" class="btn btn-primary" id="submitButton" style="display: none;">

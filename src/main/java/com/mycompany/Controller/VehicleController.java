@@ -10,6 +10,7 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ import java.util.List;
  * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
  */
 @WebServlet("/vehicle/")
+@MultipartConfig
 public class VehicleController extends HttpServlet {
 
     private static String INSERT = "/Registration.jsp";
@@ -119,9 +121,9 @@ public class VehicleController extends HttpServlet {
         InputStream fileContent = filePart.getInputStream();
         byte[] fileData = fileContent.readAllBytes();
         v.setPicture(fileData);
-        
+
         dao.AddVehicle(v);
-        RequestDispatcher rd = request.getRequestDispatcher(List_Vehicle);
+        RequestDispatcher rd = request.getRequestDispatcher("list");
         rd.forward(request, response);
     }
 
@@ -140,7 +142,18 @@ public class VehicleController extends HttpServlet {
     }
 
     public void updateVehicle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-
+        Vehicle v = new Vehicle();
+        v.setVehicleId(request.getParameter("id"));
+        v.setVehicleType(request.getParameter("vehicleType"));
+        v.setRoadTaxExp(request.getParameter("RoadTaxExp"));
+        Part filePart = request.getPart("Picture");
+        InputStream fileContent = filePart.getInputStream();
+        byte[] fileData = fileContent.readAllBytes();
+        v.setPicture(fileData);
+        
+        dao.UpdateVehicle(v);
+        RequestDispatcher rd = request.getRequestDispatcher("list");
+        rd.forward(request, response);
     }
-
+        
 }

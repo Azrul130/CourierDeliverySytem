@@ -26,6 +26,7 @@
                 
                 <div class="card-body col-md-6">
                     <table class="table table-bordered">
+                        <a href="http://localhost:8080/courierdeliverysystem/VehicleForm.jsp">Add new Vehicle</a>
                     <thead>
                         <tr>
                             <th>Vehicle Id</th>
@@ -39,22 +40,22 @@
                         <c:forEach var="veh" items="${listVeh}">
                             <tr>
                                 <td>
-                                    <c:out value="${veh.VehicleId}"/>
+                                    <c:out value="${veh.vehicleId}"/>
                                 </td>                               
                                 <td>
-                                    <c:out value="${veh.vehicletype}"/>
+                                    <c:out value="${veh.vehicleType}"/>
                                 </td>
                                 <td>
-                                    <c:out value="${veh.roadtaxexp}"/>
+                                    <c:out value="${veh.roadTaxExp}"/>
                                 </td>
                                 <td>
-                                    <c:set var="base64Picture" value="${veh.getBase64Picture()}"/>
+                                    <c:set var="base64Picture" value="${veh.getPictureBase64()}"/>
                                     <c:if test="${not empty base64Picture}">
                                         <img src="data:image/png;base64,${base64Picture}" width="100" height="100" />
                                     </c:if>
                                 </td>
-                                <td><a href="edit?vehId=${veh.vehicleID}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
-                                    <a href="delete?vehId=${veh.vehicleID}" class="btn btn-secondary">Delete</a>
+                                <td><a href="edit?vehId=${veh.vehicleId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
+                                    <a href="delete?vehId=${veh.vehicleId}" class="btn btn-secondary">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -63,5 +64,6 @@
                 </div>
             </div>
         </div>
+        <a href="http://localhost:8080/courierdeliverysystem/AdminManagement.jsp">DashBoard</a>
     </body>
 </html>

@@ -27,11 +27,11 @@
             </div>
             <div class="mb-3">
                 <label for="roadTaxExp" class="form-label">Road Tax Expiry Date</label>
-                <input type="date" class="form-control" id="roadTaxExp" name="RoadTaxExp" required>
+                <input type="text" class="form-control" pattern="\d{2}/\d{2}/\d{2}" id="roadTaxExp" name="RoadTaxExp" required>
             </div>
             <div class="mb-3">
                 <label for="picture" class="form-label">Picture</label>
-                <input type="file" class="form-control" id="picture" name="Picture" accept="image/*" required>
+                <input type="file" class="form-control" id="picture" name="Picture"  required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

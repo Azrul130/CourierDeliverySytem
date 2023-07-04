@@ -30,7 +30,7 @@ public class VehicleRiderDAO {
     //vehicle
     private static final String AddVehicle = "INSERT INTO vehicle ( VehicleID, vehicleType, RoadTaxExp, Picture) VALUES (?,?,?,?)";
     private static final String DeleteVehicle = "DELETE FROM vehicle WHERE VehicleID=?";
-    private static final String UpdateVehicle = "UPDATE driver SET vehicleType=?, RoadTaxExp=?, Picture=? WHERE VehicleID=?";
+    private static final String UpdateVehicle = "UPDATE vehicle SET vehicleType=?, RoadTaxExp=?, Picture=? WHERE VehicleID=?";
     private static final String ViewVehicleByID = "SELECT * FROM vehicle WHERE VehicleID=?";
     private static final String ViewAllVehicle = "SELECT * FROM vehicle";
     //Rider
