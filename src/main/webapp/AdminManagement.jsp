@@ -67,7 +67,6 @@
             </div>
             <jsp:include flush="true" page="footer.html" />
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
-            integrity="sha384-"></script>
+            
     </body>
 </html>
