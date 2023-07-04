@@ -53,9 +53,6 @@ public class OrderController extends HttpServlet {
                 case "/deleteorder":
                     deleteOrder(request, response);
                     break;
-                case "/orderdetail":
-                    orderDetail(request, response);
-                    break;
                 /*   case "/editorder":
                     showEditForm(request, response);
                     break;
