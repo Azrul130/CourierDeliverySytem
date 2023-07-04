@@ -24,6 +24,10 @@
         <servlet-name>VehicleController</servlet-name>
         <servlet-class>com.mycompany.Controller.VehicleController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RiderController</servlet-name>
+        <servlet-class>com.mycompany.Controller.RiderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/CustomerController</url-pattern>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>VehicleController</servlet-name>
         <url-pattern>/vehicle/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RiderController</servlet-name>
+        <url-pattern>/rider/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
