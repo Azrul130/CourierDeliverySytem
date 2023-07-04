@@ -64,6 +64,6 @@
                 </div>
             </div>
         </div>
-        <a href="http://localhost:8080/courierdeliverysystem/AdminManagement.jsp">DashBoard</a>
+        
     </body>
 </html>
