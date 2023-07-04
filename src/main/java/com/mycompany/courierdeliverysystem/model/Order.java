@@ -96,7 +96,5 @@ public class Order {
     public void setParcelType(String parcelType) {
         this.parcelType = parcelType;
     }
-    
-    
 
 }

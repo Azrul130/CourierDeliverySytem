@@ -25,11 +25,12 @@ import java.sql.SQLException;
 public class OrderController extends HttpServlet {
 
     private OrderDAO dao;
-    
-    public void init(){
+
+    public void init() {
         dao = new OrderDAO();
     }
-        @Override
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
@@ -43,16 +44,19 @@ public class OrderController extends HttpServlet {
         try {
             switch (action) {
 
-        //        case "/neworder":
-        //            showNewForm(request, response);
-        //            break;
-                case "/insertorder":
+                //        case "/neworder":
+                //            showNewForm(request, response);
+                //            break;
+                case "/addtorder":
                     AddOrder(request, response);
                     break;
-        /*        case "/deleteorder":
-                    deleteCustomer(request, response);
+                case "/deleteorder":
+                    deleteOrder(request, response);
                     break;
-                case "/editorder":
+                case "/orderdetail":
+                    orderDetail(request, response);
+                    break;
+                /*   case "/editorder":
                     showEditForm(request, response);
                     break;
                 case "/updateorder":
@@ -61,14 +65,14 @@ public class OrderController extends HttpServlet {
                 case "/listorder":
                     listCustomer(request, response);
                     break;
-            */
+                 */
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
     }
-    
-       protected void AddOrder(HttpServletRequest request, HttpServletResponse response)
+
+    protected void AddOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         String orderId = CustIdGenerate.generateOrderId(5);
         String custId = request.getParameter("custId");
@@ -77,7 +81,22 @@ public class OrderController extends HttpServlet {
         String desc = request.getParameter("description");
         double weigth = Double.parseDouble(request.getParameter("weight"));
         String parcelType = request.getParameter("parcelType");
+        response.sendRedirect("orderdetail");
+    }
+
+    protected void deleteOrder(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        String orderId = request.getParameter("OrderId");
+        dao.deleteOrder(orderId);
         response.sendRedirect("");
     }
 
+    protected void orderDetail(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        String orderId = request.getParameter("orderId");
+        Order order = dao.viewOrder(orderId);
+        RequestDispatcher dp = request.getRequestDispatcher("");
+        request.setAttribute("order", order);
+        dp.forward(request, response);
+    }
 }

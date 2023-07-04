@@ -28,15 +28,15 @@ public class OrderDAO {
 
     //SQL Query
     private static final String Add_New_Order = "INSERT INTO order(orderId, custId, recipientName, recipientAddress, description, weight, parcelType) values (?,?,?,?,?,?)";
-    private static final String View_All_Order = "SELECT * FROM order where custId=?";//
+    private static final String View_All_Order = "SELECT * FROM order";//
     private static final String View_Order_By_Id = "SELECT * FROM order WHERE orderId = ?";
     private static final String Edit_Order = "UPDATE order SET recipientname=?, recipientaddress=?, description=?, weight=?, parceltype=? WHERE orderId=?";
     private static final String Delete_Order = "DELETE FROM order WHERE orderId=?";
 
-       public OrderDAO() {
+    public OrderDAO() {
 
     }
-    
+
     //Connection method
     protected Connection getConnection() {
         Connection con = null;
@@ -67,60 +67,54 @@ public class OrderDAO {
         }
     }
 
-    /*
     //View all order
-    public static List<Order> viewAllOrder() {
+    public List<Order> viewAllOrder() {
         List<Order> list = new ArrayList<>();
-        try {
-            Connection con = OrderDAO.getConnection();
-            Statement st = con.createStatement();
+        try (Connection con = getConnection(); Statement st = con.createStatement()) {
             ResultSet rs = st.executeQuery(View_All_Order);
             while (rs.next()) {
-                Order order = new Order();
-                order.setOrderid(rs.getString(1));
-                order.setRecipientName(rs.getString(2));
-                order.setRecipientAddress(rs.getString(3));
-                order.setWeight(rs.getDouble(4));
-                order.setDescription(rs.getString(5));
-                order.setParceltype(rs.getString(6));
-
-                list.add(order);
+                String orderid = rs.getString("orderId");
+                String custid = rs.getString("custId");
+                String recipientname = rs.getString("recipientName");
+                String recipientaddr = rs.getString("recipientAddress");
+                double weight = rs.getDouble("weight");
+                String desc = rs.getString("description");
+                String parceltype = rs.getString("parcelType");
+                list.add(new Order(orderid, custid, recipientname, recipientaddr,weight,desc,parceltype));
             }
-            con.close();
         } catch (SQLException e) {
         }
         return list;
     }
 
+    
     //View order By Id
-    public static Order viewOrder(String orderid) {
+    public Order viewOrder(String orderId) {
         Order order = new Order();
-        try {
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement(View_Order_By_Id);
-            ps.setString(1, orderid);
+        try (Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(View_Order_By_Id)){
+            ps.setString(1, orderId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                order.setOrderid(rs.getString(1));
-                order.setRecipientName(rs.getString(2));
-                order.setRecipientAddress(rs.getString(3));
-                order.setWeight(rs.getDouble(4));
-                order.setDescription(rs.getString(5));
-                order.setParceltype(rs.getString(6));
-                con.close();
+                String custid = rs.getString("custId");
+                String recipientname = rs.getString("recipientName");
+                String recipientaddr = rs.getString("recipientAddress");
+                double weight = rs.getDouble("weight");
+                String desc = rs.getString("description");
+                String parceltype = rs.getString("parcelType");
+                order = new Order(orderId, custid, recipientname, recipientaddr,weight,desc,parceltype);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return order;
     }
- */
+     
     //update order
     public boolean updateOrder(Order order) {
         boolean rowUpdate = false;
         try (
-            Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement(Edit_Order)){
+                Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Edit_Order)) {
             ps.setString(1, order.getRecipientName());
             ps.setString(2, order.getRecipientAddress());
             ps.setDouble(3, order.getWeight());
@@ -133,7 +127,7 @@ public class OrderDAO {
         }
         return rowUpdate;
     }
-    
+
     //Delete order
     public boolean deleteOrder(String orderId) throws SQLException {
         boolean rowDeleted = false;

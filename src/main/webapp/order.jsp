@@ -23,7 +23,7 @@
         
         <h2>Create Order</h2>
 
-        <form action="processOrder.jsp" method="POST"><table>              
+        <form action="addorder" method="POST"><table>              
 
                 <tr>
                     <td>
