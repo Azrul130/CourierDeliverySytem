@@ -146,6 +146,7 @@ public class VehicleRiderDAO {
             ps.setString(2, r.getVehicleID());
             ps.setString(3, r.getLicenceExp());
             ps.setInt(4, r.getRiderId());
+            ps.executeUpdate();
         }
     }
 

@@ -55,14 +55,14 @@ public class EmployeeController extends HttpServlet {
                     editEmp(request, response);
                     break;
                 case "update":
-                    updateEmp(request,response);
+                    updateEmp(request, response);
                     break;
                 case "add":
-                    addEmp(request,response);
+                    addEmp(request, response);
                     break;
-                    case "delete":
-                        deleteEmp(request,response);
-                        break;
+                case "delete":
+                    deleteEmp(request, response);
+                    break;
                 default:
                     employeeList(request, response);
                     break;
@@ -96,7 +96,7 @@ public class EmployeeController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+
     //list of Employee
     public void employeeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         HttpSession session = request.getSession();
@@ -105,6 +105,7 @@ public class EmployeeController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(List_Employee);
         rd.forward(request, response);
     }
+
     //edit Form for Employee
     public void editEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String empId = request.getParameter("empId");
@@ -113,11 +114,12 @@ public class EmployeeController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(EDIT);
         rd.forward(request, response);
     }
+
     //update Employee
-    public void updateEmp(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException{
-        
+    public void updateEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+
         Employee updateEmp = new Employee();
-        
+
         String id = request.getParameter("empId");
         String name = request.getParameter("empName");
         String username = request.getParameter("username");
@@ -133,13 +135,14 @@ public class EmployeeController extends HttpServlet {
         updateEmp.setPhone(phone);
         updateEmp.setEmail(email);
         updateEmp.setOccupation(occ);
-        
+
         dao.UpdateEmployee(updateEmp);
         response.sendRedirect("http://localhost:8080/courierdeliverysystem/emp/list");
     }
+
     //add new employee
-    public void addEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
-        
+    public void addEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+
         Employee e = new Employee();
         String name = request.getParameter("name");
         String username = request.getParameter("username");
@@ -147,31 +150,31 @@ public class EmployeeController extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String occ = request.getParameter("occupation");
-        
+
         e.setName(name);
         e.setUsername(username);
         e.setPassword(password);
         e.setPhone(phone);
         e.setEmail(email);
         e.setOccupation(occ);
-        
+
         boolean success = dao.addEmp(e) > 0;
-        
-        if (success == true){
+
+        if (success == true) {
             System.out.println("Registration Success!");
             response.sendRedirect("http://localhost:8080/courierdeliverysystem/");
-        }else{
+        } else {
             System.out.println("Registration Failed!");
             response.sendRedirect("http://localhost:8080/courierdeliverysystem/");
         }
-        
+
     }
+
     //delete employee
-    public void deleteEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
+    public void deleteEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String id = request.getParameter("empId");
         dao.DeleteEmployee(id);
         response.sendRedirect("http://localhost:8080/courierdeliverysystem/emp/list");
     }
-            
-            
+
 }

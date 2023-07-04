@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Base64;
 import java.util.Random;
 
 /**
@@ -36,10 +37,18 @@ public class Vehicle {
         return picture;
     }
 
+    public String getPictureBase64() {
+        if (picture != null && picture.length > 0) {
+            return Base64.getEncoder().encodeToString(picture);
+        } else {
+            return "";
+        }
+    }
+
     public void setPicture(byte[] picture) {
         this.picture = picture;
     }
-    
+
     public String getVehicleId() {
         return VehicleId;
     }

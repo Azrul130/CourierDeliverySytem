@@ -60,7 +60,7 @@
                     </div>
                     <div class="col container-s text-center">
                         <h2>Vehicle Management</h2>
-                        <a href="#" class="btn-primary btn btn-c">Go</a>
+                        <a href="vehicle/list" class="btn-primary btn btn-c">Go</a>
                     </div>
                 </div>
 
