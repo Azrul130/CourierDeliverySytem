@@ -54,6 +54,12 @@ public class EmployeeController extends HttpServlet {
                 case "edit":
                     editEmp(request, response);
                     break;
+                case "update":
+                    updateEmp(request,response);
+                    break;
+                case "add":
+                    addEmp(request,response);
+                    break;
                 default:
                     employeeList(request, response);
                     break;
@@ -87,7 +93,8 @@ public class EmployeeController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+    //list of Employee
     public void employeeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         HttpSession session = request.getSession();
         List<Employee> employee = dao.viewAllEmp();
@@ -95,7 +102,7 @@ public class EmployeeController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(List_Employee);
         rd.forward(request, response);
     }
-
+    //edit Form for Employee
     public void editEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         String empId = request.getParameter("empId");
         Employee e = dao.viewEmpByID(empId);
@@ -103,4 +110,56 @@ public class EmployeeController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher(EDIT);
         rd.forward(request, response);
     }
+    //update Employee
+    public void updateEmp(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException{
+        
+        Employee updateEmp = new Employee();
+        
+        String id = request.getParameter("empId");
+        String name = request.getParameter("empName");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String occ = request.getParameter("occupation");
+
+        updateEmp.setEmployeeId(id);
+        updateEmp.setName(name);
+        updateEmp.setUsername(username);
+        updateEmp.setPassword(password);
+        updateEmp.setPhone(phone);
+        updateEmp.setEmail(email);
+        updateEmp.setOccupation(occ);
+        
+        dao.UpdateEmployee(updateEmp);
+        response.sendRedirect("http://localhost:8080/courierdeliverysystem/emp/list");
+    }
+    //add new employee
+    public void addEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
+        
+        Employee e = new Employee();
+        String name = request.getParameter("name");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String occ = request.getParameter("occupation");
+        
+        e.setName(name);
+        e.setUsername(username);
+        e.setPassword(password);
+        e.setPhone(phone);
+        e.setEmail(email);
+        e.setOccupation(occ);
+        
+        boolean success = dao.addEmp(e) > 0;
+        
+        if (success == true){
+            System.out.println("Registration Success!");
+        }else{
+            System.out.println("Registration Failed!");
+        }
+        
+    }
+    
 }

@@ -125,7 +125,7 @@
                                 <i class="fas fa-edit"></i> Edit
                             </button>
                         </div>
-                        <form action="emp/update" method="post">
+                        <form action="update" method="post">
                             <div class="form-group">
                                 <label for="empId">Employee ID:</label>
                                 <input type="text" id="empId" name="empId" value="${existingEmp.employeeId}" readonly>
@@ -136,7 +136,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="empUsername">Username:</label>
-                                <input type="text" id="empUsername" name="empUsername" value="${existingEmp.username}" readonly>
+                                <input type="text" id="empUsername" name="username" value="${existingEmp.username}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
@@ -148,7 +148,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone No:</label>
-                                <input type="tel" id="phone" name="phone" value="${existingEmp.email} pattern="[0-9]{10,11}" readonly>
+                                <input type="tel" id="phone" name="phone" value="${existingEmp.phone}" pattern="[0-9]{10,11}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="Occupation">Occupation:</label>
