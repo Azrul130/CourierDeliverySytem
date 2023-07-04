@@ -65,6 +65,7 @@
         </style>
     </head>
     <body>
+        <jsp:include flush="true" page="header.jsp" />
         <h1>Update Parcel Status</h1>
 
         <div class="form-container">
@@ -130,16 +131,17 @@
                     </td>
                 </tr>
                 <%
+                            }
                         }
+
+                    } catch (Exception e) {
+
                     }
-
-    } catch (Exception e) {
-
-    }
-            %>
+                %>
 
 
-        </tbody>
-    </table>
-</body>
+            </tbody>
+        </table>
+        <jsp:include flush="true" page="footer.html" />
+    </body>
 </html>
