@@ -6,63 +6,22 @@ package com.mycompany.courierdeliverysystem.function;
 
 /**
  *
- * @author MUHAMMAD FAUZUL AZIM BIN IMRAN HAYAT
+ * @author Azrul Hafizam
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Random;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Random;
 
 public class CustIdGenerate {
-    private static final String PREFIX = "CU";
-    private static final int NUM_CHARS = 6;
-    private static final String CHARACTERS = "0123456789";
-    private static final Random RANDOM = new Random();
-    private static final String URL = "jdbc:mysql://localhost:3306/courierdeliverysystem";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "admin";
-
-
-    private static String generateRandomCustId() throws SQLException {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        String custId = null;
-
-        try {
-            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            stmt = conn.prepareStatement("SELECT * FROM customer WHERE CustId = ?");
-            do {
-                StringBuilder sb = new StringBuilder();
-                sb.append(PREFIX);
-                for (int i = 0; i < NUM_CHARS; i++) {
-                    sb.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
-                }
-                custId = sb.toString();
-                stmt.setString(1, custId);
-                rs = stmt.executeQuery();
-            } while (rs.next()); // Check if ID already exists in database
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
+    
+    public static String generateOrderId(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder orderId = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            char randomChar = characters.charAt(random.nextInt(characters.length()));
+            orderId.append(randomChar);
         }
-
-        return custId;
+        return orderId.toString();
     }
+    
 }

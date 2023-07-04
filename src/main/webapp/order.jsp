@@ -23,7 +23,7 @@
         
         <h2>Create Order</h2>
 
-        <form action="processOrder.jsp" method="POST"><table>              
+        <form action="addorder" method="POST"><table>              
 
                 <tr>
                     <td>
@@ -54,14 +54,26 @@
 
                 <tr>
                     <td>
-                        <label for="Description">Package Description:</label>
+                        <label for="Description">Description:</label>
                     </td>
                     <td>
                         <input type="text" id="Description" name="Description" required><br/>
                     </td>
                 </tr>
+                       <tr>
+                    <td>
+                        <label for="parceltype">Parcel Type</label>
+                    </td>
+                    <td>
+                        <select name="parceltype" size="1">
+                            <option value="local">Local</option>
+                            <option value="Oversea">Oversea</option>
+                        </select>
+                    </td>
+                       </tr>
+                       <br><!-- comment -->
             </table>
-
+            <br><!-- comment -->
             <p>
                 <input type="submit" value="Create Order">
                 <input type="reset" value="Clear">
