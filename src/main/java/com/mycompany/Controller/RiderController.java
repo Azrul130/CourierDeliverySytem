@@ -130,13 +130,23 @@ public class RiderController extends HttpServlet {
     }
     public void editRider(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException , SQLException{
         HttpSession session = request.getSession();
+        int id = Integer.parseInt(request.getParameter("riderId"));
         session.setAttribute("employeeList", dao2.viewAllEmp());
         session.setAttribute("vehicleList", dao.ViewAllVehicle());
+        request.setAttribute("rider", dao.ViewRiderById(id));
         RequestDispatcher rd = request.getRequestDispatcher("/RiderEdit.jsp");
         rd.forward(request, response);
     }
     public void updateRider(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException , SQLException{
+        Rider r = new Rider();
+        r.setEmployeeId(request.getParameter("id"));
+        r.setEmployeeId(request.getParameter("employeeId"));
+        r.setVehicleID(request.getParameter("vehicleId"));
+        r.setLicenceExp(request.getParameter("licenceExp"));
         
+        dao.UpdateRider(r);
+        RequestDispatcher rd = request.getRequestDispatcher("list");
+        rd.forward(request, response);
     }
     public void addform(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException ,SQLException{
         HttpSession session = request.getSession();
