@@ -159,6 +159,7 @@ public class EmployeeController extends HttpServlet {
         
         if (success == true){
             System.out.println("Registration Success!");
+            response.sendRedirect("http://localhost:8080/courierdeliverysystem/");
         }else{
             System.out.println("Registration Failed!");
             response.sendRedirect("http://localhost:8080/courierdeliverysystem/");

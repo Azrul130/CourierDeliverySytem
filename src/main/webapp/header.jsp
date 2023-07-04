@@ -71,18 +71,33 @@
                         <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8080/courierdeliverysystem">Home</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown"
-                               role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Services</a>
-                            <div class="dropdown-menu" aria-labelledby="serviceDropdown">
+                        <c:choose>
+                            <c:when test="${empty sessionScope.user}">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown"
+                                       role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Services</a>
+                                    <div class="dropdown-menu" aria-labelledby="serviceDropdown">
 
-                                <a class="dropdown-item" href="order.jsp">Create Order</a>
-                                <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
+                                        <a class="dropdown-item" href="Login.jsp">Create Order</a>
+                                        <a class="dropdown-item" href="Login.jsp">View Order</a>
 
+                                    </div>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown"
+                                       role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Services</a>
+                                    <div class="dropdown-menu" aria-labelledby="serviceDropdown">
 
-                            </div>
-                        </li>
+                                        <a class="dropdown-item" href="order.jsp">Create Order</a>
+                                        <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
+
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
                         </li>
