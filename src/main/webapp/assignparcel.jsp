@@ -47,7 +47,7 @@
         </style>
     </head>
     <body>
-        <%--<jsp:include page="header.jsp" flush="true" />--%>
+        <jsp:include page="header.jsp" flush="true" />
 
         <h1>Assign parcel to the driver</h1>
         <div id="form">
