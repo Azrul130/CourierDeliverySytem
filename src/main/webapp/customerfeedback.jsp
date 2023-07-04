@@ -59,20 +59,15 @@
         
     </head>
     <body>
-        <jsp:include flush="true" page="header.jsp" />
+        <%--<jsp:include flush="true" page="header.jsp" />--%>
         <h1>Customer Feedback</h1>
+        
+        <!--retrieve session-->
+       
+        
         <div id="container">
-            <form action="feedback_process.php" method="POST">
-                <h3>Your Information:</h3>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required><br><br>
-
+            <form action="feedback_process.jsp" method="POST">
+                
                 <h3>Feedback Details:</h3>
 
                 <label for="rating">Rate your overall experience:</label>
@@ -122,6 +117,6 @@
                 </div>
             </form>
         </div>
-        <jsp:include flush="true" page="footer.html" />
+        <%--<jsp:include flush="true" page="footer.html" />--%>
     </body>
 </html>
