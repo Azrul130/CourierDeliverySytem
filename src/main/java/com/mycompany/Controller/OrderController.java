@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -47,7 +48,7 @@ public class OrderController extends HttpServlet {
                 //        case "/neworder":
                 //            showNewForm(request, response);
                 //            break;
-                case "/addtorder":
+                case "/addorder":
                     AddOrder(request, response);
                     break;
                 case "/deleteorder":
@@ -58,11 +59,11 @@ public class OrderController extends HttpServlet {
                     break;
                 case "/updateorder":
                     updateCustomer(request, response);
+                    break;*/
+                case "/listOrder":
+                    listOrder(request, response);
                     break;
-                case "/listorder":
-                    listCustomer(request, response);
-                    break;
-                 */
+
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -71,27 +72,38 @@ public class OrderController extends HttpServlet {
 
     protected void AddOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        String orderId = CustIdGenerate.generateOrderId(5);
-        String custId = request.getParameter("custId");
+        String ParcelId = request.getParameter("ParcelId");
+        String custId = request.getParameter("CustId");
         String recipientName = request.getParameter("recipientName");
         String recipientAddress = request.getParameter("recipientAddress");
         String desc = request.getParameter("description");
         double weigth = Double.parseDouble(request.getParameter("weight"));
         String parcelType = request.getParameter("parcelType");
-        response.sendRedirect("orderdetail");
+        Order order = new Order(ParcelId, custId, recipientName, recipientAddress, weigth, desc, parcelType);
+        dao.addOrder(order);
+        response.sendRedirect("payment.jsp");
+    }
+
+    protected void listOrder(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+        String CustId = request.getParameter("CustId");
+        List<Order> listOrder = dao.viewAllOrder(CustId);
+        request.setAttribute("listOrder", listOrder);
+        RequestDispatcher dp = request.getRequestDispatcher("viewOrder.jsp");
+        dp.forward(request, response);
     }
 
     protected void deleteOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        String orderId = request.getParameter("OrderId");
-        dao.deleteOrder(orderId);
+        String ParcelId = request.getParameter("ParcelId");
+        dao.deleteOrder(ParcelId);
         response.sendRedirect("");
     }
 
     protected void orderDetail(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        String orderId = request.getParameter("orderId");
-        Order order = dao.viewOrder(orderId);
+        String CustId = request.getParameter("CustId");
+        Order order = dao.viewOrder(CustId);
         RequestDispatcher dp = request.getRequestDispatcher("");
         request.setAttribute("order", order);
         dp.forward(request, response);

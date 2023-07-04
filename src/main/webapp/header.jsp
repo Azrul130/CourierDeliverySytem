@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="jakarta.servlet.ServletContext" %>
+<%@page import="com.mycompany.courierdeliverysystem.model.Customer" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -93,7 +95,7 @@
                                     <div class="dropdown-menu" aria-labelledby="serviceDropdown">
 
                                         <a class="dropdown-item" href="order.jsp">Create Order</a>
-                                        <a class="dropdown-item" href="viewOrder.jsp">View Order</a>
+                                        <a class="dropdown-item" href="listOrder?CustId=<%= ((Customer) session.getAttribute("cust")).getCustId() %>">View Order</a>
 
                                     </div>
                                 </c:otherwise>
