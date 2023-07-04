@@ -52,7 +52,7 @@
                 <c:set var="logoPath" value="images/delivery-service-icon-6.jpg" />
                 <c:choose>
                     <c:when test="${pageContext.request.requestURL.toString() == 'http://localhost:8080/courierdeliverysystem/'}">
-                        <c:set var="logoPath" value="${pageContext.request.contextPath}/${logoPath}" />
+                        <c:set var="logoPath" value="${logoPath}" />
                     </c:when>
                     <c:otherwise>
                         <c:set var="logoPath" value="../${logoPath}" />
