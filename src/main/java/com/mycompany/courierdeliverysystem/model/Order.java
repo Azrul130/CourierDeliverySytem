@@ -11,25 +11,42 @@ import Courier.com.trackingNumber;
  */
 
 public class Order {
-    private String orderid;
+    private String orderId;
     private String custId;
     private String recipientName;
     private String recipientAddress;
     private double weight;
-    private String Description;
-    private String parceltype;
+    private String description;
+    private String parcelType;
 
     public Order() {
     }
 
-    public Order(String custId, String recipientName, String recipientAddress, double weight, String Description, String parceltype) {
-        super();
+    public Order(String custId, String recipientName, String recipientAddress, double weight, String description, String parcelType) {
         this.custId = custId;
         this.recipientName = recipientName;
         this.recipientAddress = recipientAddress;
         this.weight = weight;
-        this.Description = Description;
-        this.parceltype = parceltype;
+        this.description = description;
+        this.parcelType = parcelType;
+    }
+
+    public Order(String orderId, String custId, String recipientName, String recipientAddress, double weight, String description, String parcelType) {
+        this.orderId = orderId;
+        this.custId = custId;
+        this.recipientName = recipientName;
+        this.recipientAddress = recipientAddress;
+        this.weight = weight;
+        this.description = description;
+        this.parcelType = parcelType;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public String getCustId() {
@@ -38,14 +55,6 @@ public class Order {
 
     public void setCustId(String custId) {
         this.custId = custId;
-    }    
-    
-    public String getOrderid() {
-        return orderid;
-    }
-
-    public void setOrderid(String orderid) {
-        orderid = trackingNumber.TrackingNumber() ;
     }
 
     public String getRecipientName() {
@@ -73,18 +82,21 @@ public class Order {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getParceltype() {
-        return parceltype;
+    public String getParcelType() {
+        return parcelType;
     }
 
-    public void setParceltype(String parceltype) {
-        this.parceltype = parceltype;
+    public void setParcelType(String parcelType) {
+        this.parcelType = parcelType;
     }
+    
+    
+
 }
