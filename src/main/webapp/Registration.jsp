@@ -140,7 +140,7 @@
         </div>
 
         <div id="employeeForm" style="display: none;">
-            <form>
+            <form action="emp/add" method="post">
                 <div>
                     Registration Type:
                     <input type="radio" id="cust" name="RegistrationType" value="customer" onclick="showForm(this.value)">

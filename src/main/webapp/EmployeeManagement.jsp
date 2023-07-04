@@ -54,7 +54,7 @@
                                     <c:out value="${emp.occupation}"/> &nbsp;&nbsp;
                                 </td>
                                 <td><a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;<!-- comment -->
-                                    <a href="VendorServlet?action=deleteservice&serviceid=${emp.employeeId} class="btn btn-secondary">Delete</a>
+                                    <a href="delete?empId=${emp.employeeId}" class="btn btn-secondary">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

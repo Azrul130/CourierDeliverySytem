@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Random;
 
 /**
@@ -34,7 +35,7 @@ public class Employee {
         this.name = name;
         this.password = pass;
         this.phone = phone;
-        this.EmployeeId = generateRandomEmpId();
+        this.EmployeeId = generateEmpId();
     }
     
     
@@ -143,65 +144,51 @@ public class Employee {
         this.Occupation = Occupation;
     }
     
-    //Auto-create EmployeeId
-    public String generateRandomEmpId() {
-        String generatedEmpId = "";
+    // Auto-generate CustId with prefix "C" and check uniqueness
+public String generateEmpId() {
+    String prefix = "E";
+    String generatedId = prefix + generateRandomString(5); // Generate a random 5-character string
+    String url = "jdbc:mysql://localhost/courierdeliverysystem";
+    String username = "root";
+    String password = "admin";
 
-        // Generate random number
-        Random random = new Random();
-        int randomNumber = random.nextInt(90000) + 10000; // Random number between 10000 and 99999
-
-        // Combine 'C' and random number
-        generatedEmpId = "E" + randomNumber;
-
-        // Check if generated CustId already exists in the database
-        boolean isUnique = false;
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish database connection
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem");
-
-            // Prepare SQL statement to check if CustId already exists
-            String query = "SELECT * FROM employee WHERE EmployeeId = ?";
-            statement = connection.prepareStatement(query);
-            statement.setString(1, generatedEmpId);
-
-            // Execute the query
+    try  {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(url, username, password);
+        String query = "SELECT COUNT(*) FROM employee WHERE EmployeeId = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, generatedId);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        int count = resultSet.getInt(1);
+        while (count > 0) {
+            generatedId = prefix + generateRandomString(5); // Regenerate if the id already exists
+            statement.setString(1, generatedId);
             resultSet = statement.executeQuery();
-
-            // Check if any row is returned
-            if (!resultSet.next()) {
-                // CustId is unique
-                isUnique = true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close the database resources
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            resultSet.next();
+            count = resultSet.getInt(1);
         }
+    } catch (SQLIntegrityConstraintViolationException e) {
+        // Duplicate entry exception occurred, handle it by regenerating the generatedId
+        generatedId = generateEmpId(); // Recursive call to regenerate the CustId
+    } catch (SQLException | ClassNotFoundException e) {
+        e.printStackTrace();
+    }
 
-        // If generated CustId is not unique, recursively call the method to generate a new one
-        if (!isUnique) {
-            generatedEmpId = generateRandomEmpId();
+    return generatedId;
+}
+
+
+    // Generate a random alphanumeric string of specified length
+    public String generateRandomString(int length) {
+        String characters = "0123456789";
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            sb.append(characters.charAt(index));
         }
-        
-        return generatedEmpId;
+        return sb.toString();
     }
 
     /**

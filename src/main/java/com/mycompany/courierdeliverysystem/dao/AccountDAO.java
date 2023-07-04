@@ -148,7 +148,7 @@ public class AccountDAO {
         try {
             Connection con = AccountDAO.getConnection();
             PreparedStatement ps = con.prepareStatement(Add_New_Employee);
-            ps.setString(1, emp.generateRandomEmpId() );
+            ps.setString(1, emp.generateEmpId() );
             ps.setString(2, emp.getUsername());
             ps.setString(3, emp.getPassword());
             ps.setString(4, emp.getName());
@@ -219,7 +219,15 @@ public class AccountDAO {
             }
         }
     }
-
+    //delte Employee
+    public static void DeleteEmployee(String id) throws SQLException{
+        
+        try(Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(Delete_Employee)){
+            ps.setString(1, id);
+            ps.executeUpdate();
+        }
+        
+    }
 
 
 }

@@ -60,6 +60,9 @@ public class EmployeeController extends HttpServlet {
                 case "add":
                     addEmp(request,response);
                     break;
+                    case "delete":
+                        deleteEmp(request,response);
+                        break;
                 default:
                     employeeList(request, response);
                     break;
@@ -158,8 +161,16 @@ public class EmployeeController extends HttpServlet {
             System.out.println("Registration Success!");
         }else{
             System.out.println("Registration Failed!");
+            response.sendRedirect("http://localhost:8080/courierdeliverysystem/");
         }
         
     }
-    
+    //delete employee
+    public void deleteEmp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,SQLException{
+        String id = request.getParameter("empId");
+        dao.DeleteEmployee(id);
+        response.sendRedirect("http://localhost:8080/courierdeliverysystem/emp/list");
+    }
+            
+            
 }
