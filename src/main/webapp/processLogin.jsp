@@ -52,7 +52,7 @@
                     && emp.getPassword().equals(pass) ){
                     out.print("<h1>login Success</h1>");
                     session.setAttribute("user", emp);
-                    if (emp.getOccupation() == "Receptionist") {
+                    if (emp.getOccupation().equals("Receptionist")) {
                         response.sendRedirect("assignparcel.jsp");
                     } else {
                         response.sendRedirect("AdminManagement.jsp");
