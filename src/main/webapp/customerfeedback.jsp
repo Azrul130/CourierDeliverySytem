@@ -59,7 +59,7 @@
         
     </head>
     <body>
-        <%--<jsp:include flush="true" page="header.jsp" />--%>
+        <jsp:include flush="true" page="header.jsp" />
         <h1>Customer Feedback</h1>
         
         <!--retrieve session-->
@@ -117,6 +117,6 @@
                 </div>
             </form>
         </div>
-        <%--<jsp:include flush="true" page="footer.html" />--%>
+        <jsp:include flush="true" page="footer.html" />
     </body>
 </html>

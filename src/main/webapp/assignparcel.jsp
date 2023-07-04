@@ -23,16 +23,25 @@
                 text-align: center;
                 background-color: rgb(253, 101, 101);
                 margin: auto;
-                width: 50%;
+                width: 30%;
+                padding: 5px;
             }
             label{
                 display: inline-block;
                 width:20%;
             }
-            table{
-                margin: auto;
-                background-color: red;
+            table {
                 width: 90%;
+                margin: auto;
+                place-items: center;
+
+            }
+            thead{
+                background-color: #f56e6e;
+            }
+            tbody{
+                background-color: white;
+                text-align: center;
             }
 
         </style>
@@ -62,7 +71,7 @@
                 String ParcelId = request.getParameter("parcelId");
                 String driverId = request.getParameter("driverID");
                 String Destination = request.getParameter("Destination");
-                
+
                 if (ParcelId != null || !ParcelId.isEmpty()) {
 
                     ResultSet rs = null;
@@ -89,7 +98,7 @@
                         <th>Parcel ID</th>
                         <th>Destination</th>
                         <th>Rider ID</th>
-                        <th>Rider Name</th>
+                        <th>Tracking Number</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,43 +112,28 @@
                             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem", "root", "admin");
 
                             //prepare the statement
-                            st = con.prepareStatement("SELECT * FROM order");
+                            st = con.prepareStatement("SELECT * FROM delivery");
                             rs = st.executeQuery();
 
                             while (rs.next()) {
                     %>
                     <tr>
+
                         <td><%=rs.getString("ParcelId")%></td>
-                        <%
-                            }
-                            st = con.prepareStatement("SELECT * FROM delivery");
-                            rs = st.executeQuery();
-
-                            while (rs.next()) {
-                        %>
-                        <td><%=rs.getString("RiderId")%></td>
                         <td><%=rs.getString("Destination")%></td>
+                        <td><%=rs.getString("RiderId")%></td>
+                        <td><%=rs.getString("TrackingNo")%></td>
+
                         <%
-                            }
-                            st = con.prepareStatement("SELECT * FROM employee");
-                            rs = st.executeQuery();
+                                }
 
-                            while (rs.next()) {
+                            } catch (Exception e) {
+
+                            }
                         %>
-                        <td><%=rs.getString("Name")%></td>
-                    </tr>
-                    <%
-                            }
-                        } catch (Exception e) {
-
-                        }
-                    %>
                 </tbody>
             </table>
         </div>
-
-        <!--Driver list available-->
-
         <%--<jsp:include page="footer.html" flush="true" />--%>
     </body>
 </html>
