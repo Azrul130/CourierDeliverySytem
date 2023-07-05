@@ -29,17 +29,16 @@
             <header class="bg-light text-center py-5">
                 <h1>Welcome to the Courier Delivery System</h1>
                 <p class="lead">Efficient and reliable delivery services at your doorstep</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a>
+                <a class="btn btn-primary btn-lg" href="Registration.jsp" role="button">Get Started</a>
             </header>
 
             <section class="container my-5">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row">
-                            <h2>Our Services</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet faucibus l
-                                uctus. Curabitur volutpat metus non tellus luctus dapibus.</p>
-                            <a class="btn btn-info " style="width: 200px;" href="#" role="button">Learn More</a>
+                            <h2 id="about">Our Services</h2>
+                            <p>We Provide fast, efficient, and most importantly Secured courier service throughout Malaysia.</p>
+                            <a class="btn btn-info " style="width: 200px;" href="contact" role="button">Learn More</a>
                         </div>
                         <br/>
                         <div class="row">
@@ -48,7 +47,7 @@
                         </div>
                         <div class="row">
                             <h2 id="Contact">Contact</h2>
-                            <p><span class="material-symbols-outlined" style="font-size: 12px;">
+                            <p><span id="contact" class="material-symbols-outlined" style="font-size: 12px;">
                                     Call 011-4032-1539 - Muhammad Fauzul Azim Bin Imran Hayat<br><br><br><!-- comment -->
                                     Whatsapp : <img src="images/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" width="15px">
                                                     <a href="https://wa.link/0uf5bc/">011-4032 1539</a>
