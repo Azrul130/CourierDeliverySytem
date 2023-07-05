@@ -57,8 +57,8 @@
                                 <td><%=email%></td>
                                 <td><%=Occupation%></td>
                                 <td>
-                                    <a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="assignparcel.jsp" class="btn btn-warning">Assign Parcel</a>
+                                    <!--<a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;-->
+                                    <a href="updateparcel.jsp" class="btn btn-warning">Update Parcel Status</a>
                                 </td>
                             </tr>
                         </tbody>
