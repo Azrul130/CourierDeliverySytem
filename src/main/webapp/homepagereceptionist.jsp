@@ -35,15 +35,6 @@
             st = con.prepareStatement("SELECT * FROM employee where EmployeeId=?");
             st.setString(1, username);
             rs = st.executeQuery();
-
-            while (rs.next()) {
-                String EmployeeId = rs.getNString("EmployeeId");
-                String name = rs.getNString("Name");
-                String email = rs.getNString("email");
-                String phone = rs.getNString("phoneNo");
-                String Occupation = rs.getNString("Occupation");
-
-
         %>
         <h1>Welcome <%=username%></h1>
         <div class="container">
@@ -62,6 +53,8 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <%while (rs.next()) {%>
+
                                 <td><%=rs.getString("EmployeeId")%></td>
                                 <td><%=rs.getString("Name")%></td>
                                 <td><%=rs.getString("phoneNo")%></td>
@@ -74,10 +67,11 @@
                             </tr>
                         </tbody>
                     </table>
-                    </body>
+
                 </div>
             </div>
         </div>
         <%}%>
+    </body>
 </html>
 
