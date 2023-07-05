@@ -60,7 +60,7 @@
                         <c:set var="logoPath" value="../${logoPath}" />
                     </c:otherwise>
                 </c:choose>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="http://localhost:8080/courierdeliverysystem">
                     <img src="${logoPath}" alt="Logo" width="35" height="35" class="d-inline-block">
                     Courier Delivery System
                 </a>
@@ -101,10 +101,10 @@
                                 </c:otherwise>
                             </c:choose>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#Contact">Contact</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" 

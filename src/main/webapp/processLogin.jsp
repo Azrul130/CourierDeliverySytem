@@ -53,10 +53,12 @@
                     out.print("<h1>login Success</h1>");
                     session.setAttribute("user", emp);
                     if (emp.getOccupation().equals("Receptionist")) {
-                        response.sendRedirect("assignparcel.jsp");
+                        response.sendRedirect("homepagereceptionist.jsp");
+                    } else if(emp.getOccupation().equals("Rider")){
+                        response.sendRedirect("homepagerider.jsp");
                     } else {
-                        response.sendRedirect("AdminManagement.jsp");
-                    }
+                    response.sendRedirect("AdminManagement.jsp");
+            }
                 } else {
                     request.setAttribute("loginStatus", false);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
