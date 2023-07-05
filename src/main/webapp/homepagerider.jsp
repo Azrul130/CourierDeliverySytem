@@ -21,19 +21,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     </head>
     <body>
+        <jsp:include flush="true" page="header.jsp" />
         <%
-            String username = (String) session.getAttribute("user");
+            //get values
 
-            ResultSet rs = null;
-            PreparedStatement st = null;
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem", "root", "admin");
+            String EmployeeId = emp.getEmployeeId();
+            String username = emp.getUsername();
+            String name = emp.getName();
+            String email = emp.getEmail();
+            String phone = emp.getPhone();
+            String Occupation = emp.getOccupation();
 
-            st = con.prepareStatement("SELECT * FROM employee where EmployeeId=?");
-            st.setString(1, username);
-            rs = st.executeQuery();
-        
-        
+
         %>
         <h1>Welcome <%=username%></h1>
         <div class="container">
@@ -51,23 +50,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%while (rs.next()) {%>
                             <tr>
-                                <td><%=rs.getString("EmployeeId")%></td>
-                                <td><%=rs.getString("Name")%></td>
-                                <td><%=rs.getString("phoneNo")%></td>
-                                <td><%=rs.getString("email")%></td>
-                                <td><%=rs.getString("Occupation")%></td>
+                                <td><%=EmployeeId%></td>
+                                <td><%=name%></td>
+                                <td><%=phone%></td>
+                                <td><%=email%></td>
+                                <td><%=Occupation%></td>
                                 <td>
-                                    <!--<a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;-->
-                                    <a href="updateparcel.jsp" class="btn btn-warning">Update Parcel Status</a>
+                                    <a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="assignparcel.jsp" class="btn btn-warning">Assign Parcel</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    </body>
+
                 </div>
             </div>
         </div>
-        <%}%>
+    </body>
 </html>
