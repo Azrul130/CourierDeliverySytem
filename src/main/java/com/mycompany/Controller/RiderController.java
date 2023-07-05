@@ -139,7 +139,7 @@ public class RiderController extends HttpServlet {
     }
     public void updateRider(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException , SQLException{
         Rider r = new Rider();
-        r.setEmployeeId(request.getParameter("id"));
+        r.setRiderId(Integer.parseInt(request.getParameter("id")));
         r.setEmployeeId(request.getParameter("employeeId"));
         r.setVehicleID(request.getParameter("vehicleId"));
         r.setLicenceExp(request.getParameter("licenceExp"));
