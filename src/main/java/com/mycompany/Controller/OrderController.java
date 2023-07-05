@@ -87,8 +87,8 @@ public class OrderController extends HttpServlet {
     protected void listOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         String CustId = request.getParameter("CustId");
-        List<Order> listOrder = dao.viewAllOrder(CustId);
-        request.setAttribute("listOrder", listOrder);
+       // List<Order> listOrder = ;
+        request.setAttribute("listOrder", dao.viewAllOrder(CustId));
         RequestDispatcher dp = request.getRequestDispatcher("viewOrder.jsp");
         dp.forward(request, response);
     }
