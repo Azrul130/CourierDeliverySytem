@@ -26,7 +26,8 @@
                 
                 <div class="card-body col-md-6">
                     <table class="table table-bordered">
-                        <a href="addform">Add new Rider</a>
+                        <a href="addform" class="btn btn-primary">Add new Rider</a>&nbsp;&nbsp;
+                        <a href="http://localhost:8080/courierdeliverysystem/AdminManagement.jsp" class="btn btn-primary">DashBoard</a><br><br>
                     <thead>
                         <tr>
                             <th>Rider Id</th>

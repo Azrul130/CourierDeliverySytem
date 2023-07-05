@@ -42,7 +42,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Phone No</th>
                         <th scope="col">Email</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -50,19 +50,19 @@
                     <c:forEach items="${cust}" var="cust">
                         <tr>
                             <th scope="row"><%=count%></th>
-                            <% count++; %>
+                                <% count++; %>
                             <td><c:out value="${cust.custId}"/></td>
                             <td><c:out value="${cust.username}"/></td>
                             <td><c:out value="${cust.name}"/></td>
                             <td><c:out value="${cust.phone}"/></td>
                             <td><c:out value="${cust.email}"/></td>
-                            
+
                         </tr>
                     </c:forEach>
 
                 </tbody>
             </table>
-
+            <a href="http://localhost:8080/courierdeliverysystem/AdminManagement.jsp" class="btn btn-primary">DashBoard</a>
         </div>
 
         <jsp:include flush="true" page="footer.html" />

@@ -24,6 +24,7 @@
         <div class="container">
             <div class="card">
                 <div class="card-body col-md-6">
+                    <a href="http://localhost:8080/courierdeliverysystem/AdminManagement.jsp" class="btn btn-primary">DashBoard</a>
                     <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -59,7 +60,7 @@
                             </tr>
                         </c:forEach>
                     </tbody>
-                </table>
+                </table> 
                 </div>
             </div>
         </div>
