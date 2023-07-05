@@ -4,6 +4,7 @@
     Author     : Lenovo
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="emp" class="com.mycompany.courierdeliverysystem.model.Employee" scope="request"/>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -24,13 +25,23 @@
         <jsp:include flush="true" page="header.jsp" />
         <%
             //get values
+            String username = (String) session.getAttribute("user");
 
-            String EmployeeId = emp.getEmployeeId();
-            String username = emp.getUsername();
-            String name = emp.getName();
-            String email = emp.getEmail();
-            String phone = emp.getPhone();
-            String Occupation = emp.getOccupation();
+            ResultSet rs = null;
+            PreparedStatement st = null;
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/courierdeliverysystem", "root", "admin");
+
+            st = con.prepareStatement("SELECT * FROM employee where EmployeeId=?");
+            st.setString(1, username);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                String EmployeeId = rs.getNString("EmployeeId");
+                String name = rs.getNString("Name");
+                String email = rs.getNString("email");
+                String phone = rs.getNString("phoneNo");
+                String Occupation = rs.getNString("Occupation");
 
 
         %>
@@ -51,11 +62,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><%=EmployeeId%></td>
-                                <td><%=name%></td>
-                                <td><%=phone%></td>
-                                <td><%=email%></td>
-                                <td><%=Occupation%></td>
+                                <td><%=rs.getString("EmployeeId")%></td>
+                                <td><%=rs.getString("Name")%></td>
+                                <td><%=rs.getString("phoneNo")%></td>
+                                <td><%=rs.getString("email")%></td>
+                                <td><%=rs.getString("Occupation")%></td>
                                 <td>
                                     <a href="edit?empId=${emp.employeeId}" class="btn btn-warning">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a href="assignparcel.jsp" class="btn btn-warning">Assign Parcel</a>
@@ -67,5 +78,6 @@
                 </div>
             </div>
         </div>
+        <%}%>
 </html>
 
