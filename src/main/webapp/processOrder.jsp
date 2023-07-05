@@ -10,6 +10,10 @@
 <%@page import="java.sql.Connection" %>
 <%@page import="java.sql.*" %>
 <%@page import="com.mycompany.courierdeliverysystem.model.Customer" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page  import="java.sql.*" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,11 +24,30 @@
               crossorigin="anonymous">
     </head>
     <body> 
-        <jsp:useBean id="myOrder" class="com.mycompany.courierdeliverysystem.model.Order" scope="session"/>
+        <jsp:useBean id="od" class="com.mycompany.courierdeliverysystem.model.Order" scope="session"/>
 
         <%
-   %>
-        
+            String custid = ((Customer) session.getAttribute("cust")).getCustId();
+                String Query = "SELECT * FROM courierdeliverysystem.order where CustId='"+(((Customer) session.getAttribute("cust")).getCustId())+"'";
+                PreparedStatement ps = con.prepareStatement(Query);
+
+                ps.setString(1, custid );
+
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next() ){
+                    od.setParcelId(rs.getString(1));
+                    od.setCustId(rs.getString(2));
+                    od.setRecipientName(rs.getString(3));
+                    od.setRecipientAddress(rs.getString(4));
+                    od.setWeight(rs.getDouble(5));
+                    od.setDescription(rs.getString(6));
+                    od.setParcelType(rs.getString(7));
+            }
+                    session.setAttribute("user", od);
+                    response.sendRedirect("payment.jsp");
+        %>
+
         <jsp:include page="footer.jsp" flush="true" />
     </body>
 </html>

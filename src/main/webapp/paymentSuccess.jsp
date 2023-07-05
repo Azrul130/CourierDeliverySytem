@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +16,7 @@
               crossorigin="anonymous">
     </head>
     <body>
-
+        <jsp:include page="header.jsp" flush="true" />
         <div class="container col-md-5">
             <div class="card">
                 <div class="card-body">
