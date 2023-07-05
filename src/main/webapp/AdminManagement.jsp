@@ -40,7 +40,7 @@
         <jsp:include flush="true" page="header.jsp" />
         <div class="container">
             <div class="container container-s text-center">
-                <h1>Welcome Back <span style="color: #66ffff;"><%= ((Employee) session.getAttribute("emp")).getName() %></span> !</h1>
+                <h1>Welcome Back <span style="color: #3366ff;"><%= ((Employee) session.getAttribute("emp")).getName() %></span> !</h1>
             </div>
             <div class="container">
                 <div class="row">
