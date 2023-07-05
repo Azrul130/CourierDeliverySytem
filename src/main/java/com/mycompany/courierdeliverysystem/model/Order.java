@@ -11,8 +11,8 @@ package com.mycompany.courierdeliverysystem.model;
  */
 
 public class Order {
-    private String orderId;
-    private String custId;
+    private String ParcelId;
+    private String CustId;
     private String recipientName;
     private String recipientAddress;
     private double weight;
@@ -22,8 +22,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(String custId, String recipientName, String recipientAddress, double weight, String description, String parcelType) {
-        this.custId = custId;
+    public Order(String CustId, String recipientName, String recipientAddress, double weight, String description, String parcelType) {
+        this.CustId = CustId;
         this.recipientName = recipientName;
         this.recipientAddress = recipientAddress;
         this.weight = weight;
@@ -31,9 +31,9 @@ public class Order {
         this.parcelType = parcelType;
     }
 
-    public Order(String orderId, String custId, String recipientName, String recipientAddress, double weight, String description, String parcelType) {
-        this.orderId = orderId;
-        this.custId = custId;
+    public Order(String ParcelId, String CustId, String recipientName, String recipientAddress, double weight, String description, String parcelType) {
+        this.ParcelId = ParcelId;
+        this.CustId = CustId;
         this.recipientName = recipientName;
         this.recipientAddress = recipientAddress;
         this.weight = weight;
@@ -41,20 +41,20 @@ public class Order {
         this.parcelType = parcelType;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getParcelId() {
+        return ParcelId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setParcelId(String orderId) {
+        this.ParcelId = orderId;
     }
 
     public String getCustId() {
-        return custId;
+        return CustId;
     }
 
     public void setCustId(String custId) {
-        this.custId = custId;
+        this.CustId = custId;
     }
 
     public String getRecipientName() {

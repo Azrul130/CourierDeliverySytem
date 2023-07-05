@@ -5,23 +5,23 @@
 --%>
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="jakarta.servlet.ServletContext" %>
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>View Order</title>
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
               rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
               crossorigin="anonymous">
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body>
-         <jsp:include page="header.jsp" flush="true" />
-         <br><!-- comment -->
-         <br><!-- comment -->
+        <jsp:include page="header.jsp" flush="true" />
+        <br><!-- comment -->
+        <br><!-- comment -->
         <div class="row">
             <div class="container">
                 <h3  class="text-center">Order Details</h3>
@@ -29,12 +29,13 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Order ID</th>
+                            <th>Tracking Number</th>
+                            <th>Customer Id</th>
                             <th>Recipient Name</th>
                             <th>Recipient Address</th>
                             <th>Weight</th>
+                            <th>Description</th>
                             <th>Parcel Type</th>
-                            <th>Tracking Number</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -43,36 +44,31 @@
                         <c:forEach var="order" items="${listOrder}">
                             <tr>
                                 <td>
-                                    <c:out value="${order.orderid}" />
+                                    <c:out value="${order.ParcelId}" />
                                 </td>
                                 <td>
-                                    <c:out value="${order.recipientname}" />
+                                    <c:out value="${order.CustId}" />
                                 </td>
                                 <td>
-                                    <c:out value="${order.recipientaddress}" />
+                                    <c:out value="${order.recipientName}" />
+                                </td>
+                                <td>
+                                    <c:out value="${order.recipientAddress}" />
                                 </td>
                                 <td>
                                     <c:out value="${order.weight}" />
                                 </td>
                                 <td>
+                                    <c:out value="${order.description}" />
+                                </td>
+                                <td>
                                     <c:out value="${order.parceltype}" />
                                 </td>
-
-                            </c:forEach>
-
-                            <c:forEach var="parcel" items="${listOrder}">
                                 <td>
-                                    <c:out value="${parcel.trackingnumber}" />
+                                  <%--  <c:out value="${parcel.status}" /> --%>
                                 </td>
                                 <td>
-                                    <c:out value="${parcel.status}" />
-                                </td>
-                            </c:forEach>
-
-                            <c:forEach var="order" items="${listOrder}">
-                                <td>
-                                    <a href="edit?carid=<c:out value="${order.orderid}" />">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="delete?carid=<c:out value="${order.orderid}" />">Delete</a>
+                                    <a href="deleteorder?ParcelId=<c:out value="${order.ParcelId}" />">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -83,7 +79,7 @@
             </div>
         </div>
 
-                <jsp:include page="footer.html" flush="true" />
+        <jsp:include page="footer.html" flush="true" />
     </body>
 </html>
 
