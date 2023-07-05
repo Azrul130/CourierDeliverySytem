@@ -62,7 +62,7 @@
                                     <c:out value="${order.description}" />
                                 </td>
                                 <td>
-                                    <c:out value="${order.parceltype}" />
+                                    <c:out value="${order.parcelType}" />
                                 </td>
                                 <td>
                                   <%--  <c:out value="${parcel.status}" /> --%>
