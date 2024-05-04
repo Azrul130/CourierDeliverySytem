@@ -16,10 +16,12 @@
               crossorigin="anonymous">
     </head>
     <body>
-        <jsp:include page="header.jsp" flush="true" />
+        <jsp:include page="header.jsp" flush="true" /> <br><!-- comment -->
+                    <br><!-- comment -->
         <div class="container col-md-5">
             <div class="card">
                 <div class="card-body">
+                   
                     <h1>Payment Successful !!!!!</h1>
                     <br><!-- comment -->
                     <button><a href="order.jsp">Create New Order</a></button>

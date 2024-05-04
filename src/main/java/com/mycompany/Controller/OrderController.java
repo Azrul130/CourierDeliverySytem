@@ -8,6 +8,7 @@ import com.mycompany.courierdeliverysystem.dao.OrderDAO;
 import com.mycompany.courierdeliverysystem.model.Order;
 import com.mycompany.courierdeliverysystem.function.CustIdGenerate;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -86,10 +87,11 @@ public class OrderController extends HttpServlet {
 
     protected void listOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        String CustId = request.getParameter("CustId");
-       // List<Order> listOrder = ;
-        request.setAttribute("listOrder", dao.viewAllOrder(CustId));
-        RequestDispatcher dp = request.getRequestDispatcher("viewOrder.jsp");
+        //String CustId = request.getParameter("CustId");
+        List<Order> listOrder = dao.viewAllOrder();
+        request.setAttribute("listOrder", listOrder);
+        ServletContext sc = getServletContext();
+        RequestDispatcher dp = sc.getRequestDispatcher("/viewOrder.jsp");
         dp.forward(request, response);
     }
 

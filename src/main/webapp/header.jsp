@@ -95,7 +95,7 @@
                                     <div class="dropdown-menu" aria-labelledby="serviceDropdown">
 
                                         <a class="dropdown-item" href="order.jsp">Create Order</a>
-                                        <a class="dropdown-item" href="listOrder?CustId=<%= ((Customer) session.getAttribute("cust")).getCustId() %>">View Order</a>
+                                        <a class="dropdown-item" href="<%=request.getContextPath()%>/listOrder">View Order</a>
 
                                     </div>
                                 </c:otherwise>

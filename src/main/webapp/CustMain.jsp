@@ -36,7 +36,7 @@
                         <a class="btn btn-secondary" href="#" role="button">Learn More</a>
                     </div>
                     <div class="col-md-6">
-                        <img src="delivery.jpg" alt="Delivery" class="img-fluid">
+                        <img src="images/img-who-we-are.jpg" alt="Delivery" class="img-fluid">
                     </div>
                 </div>
             </section>

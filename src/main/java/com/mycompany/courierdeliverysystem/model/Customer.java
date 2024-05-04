@@ -35,9 +35,17 @@ public class Customer {
 
     }
 
-    public Customer(String id, String un, String name, String pass, String email, String phone, String type) {
-        super();
+    public Customer(String custId, String username, String name, String password, String email, String phone, String Account_Type) {
+        this.custId = custId;
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.Account_Type = Account_Type;
     }
+    
+    
 
     public Customer() {
     }

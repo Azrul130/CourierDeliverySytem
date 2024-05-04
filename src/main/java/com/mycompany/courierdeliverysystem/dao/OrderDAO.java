@@ -29,7 +29,7 @@ public class OrderDAO {
 
     //SQL Query
     private static final String Add_New_Order = "INSERT INTO `courierdeliverysystem`.`order` (`ParcelId`, `CustId`, `recipientName`, `recipientAddress`, `weight`, `description`, `parcelType`) VALUES (?,?,?,?,?,?,?)";
-    private static final String View_All_Order = "SELECT * FROM `courierdeliverysystem`.`order` where `CustId`=?";//
+    private static final String View_All_Order = "SELECT * FROM courierdeliverysystem.order;";
     private static final String View_Order_By_Id = "SELECT * FROM order WHERE orderId = ?";
     private static final String Edit_Order = "UPDATE order SET recipientname=?, recipientaddress=?, description=?, weight=?, parceltype=? WHERE orderId=?";
     private static final String Delete_Order = "DELETE FROM courierdeliverysystem.order WHERE ParcelId=?";
@@ -68,23 +68,23 @@ public class OrderDAO {
     }
 
     //View all order
-    public List<Order> viewAllOrder(String CustId) {
-        List<Order> list = new ArrayList<>();
-        try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(View_All_Order)) {
-            ps.setString(1, CustId);
-            ResultSet rs = ps.executeQuery(View_All_Order);
+    public List<Order> viewAllOrder() {
+        List<Order> order = new ArrayList<>();
+        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(View_All_Order)) {
+            ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 String ParcelId = rs.getString("ParcelId");
-                String recipientname = rs.getString("recipientName");
-                String recipientaddr = rs.getString("recipientAddress");
+                String CustId = rs.getString("CustId");
+                String recipientName = rs.getString("recipientName");
+                String recipientAddress = rs.getString("recipientAddress");
                 double weight = rs.getDouble("weight");
-                String desc = rs.getString("description");
-                String parceltype = rs.getString("parcelType");
-                list.add(new Order(ParcelId, CustId, recipientname, recipientaddr, weight, desc, parceltype));
+                String description = rs.getString("description");
+                String parcelType = rs.getString("parcelType");
+                order.add(new Order(ParcelId, CustId, recipientName, recipientAddress, weight, description, parcelType));
             }
         } catch (SQLException e) {
         }
-        return list;
+        return order;
     }
 
     //View order By Id

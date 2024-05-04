@@ -20,11 +20,13 @@
     </head>
     <body>
         <jsp:include page="header.jsp" flush="true" />
-        <br><!-- comment -->
+        
         <br><!-- comment -->
         <div class="row">
             <div class="container">
-                <h3  class="text-center">Order Details</h3>
+                 <div class="card-body col-md-6">
+                <h3  class="text-center">Order Details </h3>
+                    
                 <br><!-- comment -->
                 <table class="table table-bordered">
                     <thead>
@@ -40,9 +42,51 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    
+                    
+                 
                     <tbody>
-                        <c:forEach var="order" items="${listOrder}">
-                            <tr>
+                         <tr>
+                                <td>
+                                    WDRE35
+                                  
+                                </td>
+                                <td>
+                                    C10974
+                                    
+                                </td>
+                                <td>
+                                    Chong
+                                  
+                                </td>
+                                <td>
+                                    Lot 1342, Kg Bahagia 17000 Pasir Mas, Kelantan
+                                 
+                                </td>
+                                <td>
+                                    2.00
+                                    
+                                </td>
+                                <td>
+                                    Fragile
+                                    
+                                </td>
+                                <td>
+                                    local
+                                   
+                                </td>
+                                <td>
+                                    Your parcel is out for delivery
+                                
+                                </td>
+                                <td>
+                                    <button>Update</button>&nbsp;
+                                    <button> Delete</button>
+                                       
+                                </td>
+                            </tr>
+                      <%--   <c:forEach var="order" items="${listOrder}">
+                              <tr>
                                 <td>
                                     <c:out value="${order.ParcelId}" />
                                 </td>
@@ -65,15 +109,16 @@
                                     <c:out value="${order.parcelType}" />
                                 </td>
                                 <td>
-                                  <%--  <c:out value="${parcel.status}" /> --%>
+                                 <c:out value="${parcel.status}" />
                                 </td>
                                 <td>
                                     <a href="deleteorder?ParcelId=<c:out value="${order.ParcelId}" />">Delete</a>
+                                    
                                 </td>
                             </tr>
                         </c:forEach>
 
-
+--%>
                     </tbody>
                 </table>
             </div>
